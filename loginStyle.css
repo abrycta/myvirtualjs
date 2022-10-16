@@ -95,6 +95,10 @@ body {
     cursor: pointer;
 }
 
+.error {
+    text-align: center;
+}
+
 .close {
     position: absolute;
     right: 1.5rem;
