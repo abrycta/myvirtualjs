@@ -1,0 +1,97 @@
+
+{
+    "matchingType": [
+        {
+            "Choice": "Abstract Factory",
+            "Answer": "Factory for building related objects."
+        },
+        {
+            "Choice": "Builder",
+            "Answer": "Used for the construction of complex objects."
+        },
+        {
+            "Choice": "Factory Method",
+            "Answer": "Defines an interface for creating an object."
+        },
+        {
+            "Choice": "Protoype",
+            "Answer": "Factory for cloning new instances from a prototype."
+        },
+        {
+            "Choice": "Protoype",
+            "Answer": "Factory for a singular (sole) instance."
+        },
+        {
+            "Choice": "Adapter",
+            "Answer": "Converts the interface of a class into another interface clients expect."
+        },
+        {
+            "Choice": "Bridge",
+            "Answer": "Decouple an abstraction from its implementation."
+        },
+        {
+            "Choice": "Composite",
+            "Answer": "Compose objects into tree structures; operations apply to the (sub)tree."
+        },
+        {
+            "Choice": "Decorator",
+            "Answer": "Attach additional responsibilities to an object dynamically"
+        },
+        {
+            "Choice": "Facade",
+            "Answer": "Provieds a unified higher-level itnerface for subsystems."
+        },
+        {
+            "Choice": "Flyweight",
+            "Answer": "use sharing to support large numers of find-grained objects efficiently."
+        },
+        {
+            "Choice": "Proxy",
+            "Answer": "Provides a placeholder for an object in order to control access to it."
+        },
+        {
+            "Choice": "Chain of Responsibility",
+            "Answer": "Request is delegated to the responsible service provider."
+        },
+        {
+            "Choice": "Command",
+            "Answer": "Request or action as an object, which can be passed, stored, activated when desired."
+        },
+        {
+            "Choice": "Iterator",
+            "Answer": "Allows sequential access to the elements of an aggregate without exposing its representationt."
+        },
+        {
+            "Choice": "Interpreter",
+            "Answer": "Language interpreter for a small grammar."
+        },
+        {
+            "Choice": "Mediator",
+            "Answer": "Defines an object that encapsulates how a set of objects interact and coordinates such interactions."
+        },
+        {
+            "Choice": "Memento",
+            "Answer": "Snapshot captures and externalize an object's internal state so that it can be passed or restored to this state at a later time."
+        },
+        {
+            "Choice": "Observer",
+            "Answer": "Dependencies are defined to an object, so that all dependents update automatically when an object changes state."
+        },
+        {
+            "Choice": "State",
+            "Answer": "Object whose behavior depends on its internal state."
+        },
+        {
+            "Choice": "Strategy",
+            "Answer": "Defines a set of algorithms, any one of which can be selected across clients."
+        },
+        {
+            "Choice": "Template Method",
+            "Answer": "lets subclasses redefine some steps of an algorithm without changing the algorithm's structure."
+        },
+        {
+            "Choice": "Visitor",
+            "Answer": "Represent operations applied to elements of an object structure."
+        }
+    ]
+}
