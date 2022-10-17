@@ -1,19 +1,23 @@
 let attempt = 3; // set available attempts to 3
 
-function jsonToArray() {
-    $.getJSON('accounts.json', function(json) {
-        var array = [];
-        for (var key in json) {
-            if (json.hasOwnProperty(key)) {
-                var item = json[key];
-                array.push({
-                    username: item.Username,
-                    password: item.Password
-                });
-            }
-        }
-    });
-}
+var accounts =  [ //temporary
+    {
+        "username": "user1",
+        "password": "pass1"
+    },
+    {
+        "username": "user2",
+        "password": "pass2"
+    },
+    {
+        "username": "user3",
+        "password": "pass3"
+    },
+    {
+        "username": "admin",
+        "password": "admin"
+    }
+]
 
 /**
  * clears username and password input field
@@ -30,12 +34,18 @@ function validateAccount() {
     let username = document.getElementById("loginUser").value;
     let password = document.getElementById("loginPassword").value;
     let errorMessage = document.getElementById("errorMessage");
+    let isValid = false;
 
-    //Todo: compare username to elements in array. csvToArray()
-    if (username === csvToArray() && password === "placeholderPassword") { // determines if username and password combination input is valid
+    for (let i = 0; i < accounts.length; i++) {
+        if (username == accounts[i].username && password == accounts[i].password) { // validate accounts
+            isValid = true;
+            break;
+        } 
+    } 
+    
+    if (isValid == true) {
         errorMessage.innerText = `Welcome ${username}`;
         errorMessage.style.color = "green";
-        alert("login successfully");
         window.location = "index.html"; // if valid, redirect to index.html
     } else {
         attempt--;
@@ -45,8 +55,8 @@ function validateAccount() {
     }
 
     /**
-     * disables login if there's 0 attempts left.
-     */
+         * disables login if there's 0 attempts left.
+         */
     if (attempt === 0) {
         document.getElementById("loginUser").disabled = true;
         document.getElementById("loginPassword").disabled = true;
