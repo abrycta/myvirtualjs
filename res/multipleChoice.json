@@ -1,5 +1,4 @@
-{
-     "multipleChoice": [
+    [
         {
           "Question": "Which is not a type of prototyping?",
           "A": "“Wizard of Oz”",
@@ -97,5 +96,3 @@
             "Answer": "Functional Patterns"
         }
      ]
-
-} 
