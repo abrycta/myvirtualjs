@@ -1,5 +1,4 @@
-{
-    "identification": [
+    [
         {
             "Question": "Description of what services that system is expected to provide and the constraints under which it must operate.",
             "Answer": "User requirements",
@@ -76,5 +75,3 @@
             "Alt-Answer": null
         }
     ]
-    
-}
