@@ -1,6 +1,19 @@
 let attempt = 3; // set available attempts to 3
 
-
+function jsonToArray() {
+    $.getJSON('accounts.json', function(json) {
+        var array = [];
+        for (var key in json) {
+            if (json.hasOwnProperty(key)) {
+                var item = json[key];
+                array.push({
+                    username: item.Username,
+                    password: item.Password
+                });
+            }
+        }
+    });
+}
 
 /**
  * clears username and password input field
