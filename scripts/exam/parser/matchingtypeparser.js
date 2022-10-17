@@ -1,5 +1,5 @@
 const fs = require('fs');
 fs.readFile('res/matchingType.json', 'utf8', (err, data) => {
     if(err) console.error(err);
-    const identify = JSON.parse(data);
+    const matchingType = JSON.parse(data);
 });
