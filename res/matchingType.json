@@ -1,6 +1,4 @@
-
-{
-    "matchingType": [
+    [
         {
             "Choice": "Abstract Factory",
             "Answer": "Factory for building related objects."
@@ -94,4 +92,3 @@
             "Answer": "Represent operations applied to elements of an object structure."
         }
     ]
-}
