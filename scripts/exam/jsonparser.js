@@ -1,8 +1,10 @@
 // store a reference to our file handle
-let examPart;
-
+let multiChoiceExam = {}
+let identificationExam = {}
+let enumerationExam = {}
+/*
 function parseJSON(input) {
-    let file = input.files[0];
+    let file = input.target.files[0];
 
     let reader = new FileReader();
 
@@ -12,7 +14,10 @@ function parseJSON(input) {
     reader.readAsText(file);
 
     reader.onload = function() {
-        examPart = JSON.parse(reader.result)
+        return function(e) {
+            examPart = JSON.parse(reader.result)
+            console.log(examPart)
+        }
     };
 
     // handler when an error occurs
@@ -23,5 +28,31 @@ function parseJSON(input) {
     return examPart
 
 }
+*/
+const parseJSON = (input) => {
+    const reader = new FileReader()
 
-export { parseJSON }
+    return new Promise((resolve, reject) => {
+        reader.onerror = () => reject(console.log("error"))
+
+        reader.onload = () => resolve(JSON.parse(reader.result))
+
+        reader.readAsText(input)
+    })
+}
+
+const JSONHandler = async (input) => {
+    let file = input.target.files[0]
+
+    try {
+        let temp = await parseJSON(file)
+        console.log(temp)
+        if(temp.type === "multi-choice") Object.assign(multiChoiceExam, temp)
+        else if (temp.type === "identification") Object.assign(identificationExam, temp)
+        else Object.assign(enumerationExam, temp)
+    } catch(e) {
+        console.warn(e.message)
+    }
+}
+
+export { JSONHandler, multiChoiceExam, enumerationExam, identificationExam}

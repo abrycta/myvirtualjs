@@ -1,5 +1,5 @@
-import {parseJSON} from "/scripts/exam/jsonparser.js";
-import {matchingPart, multiChoicePart, identificationPart} from "/scripts/exam/exammodel.js";
+import {parseJSON} from "./jsonparser.js";
+import {matchingPart, multiChoicePart, identificationPart} from "./exammodel.js";
 
 export function parse(file) {
     let tempPart = parseJSON(file)
