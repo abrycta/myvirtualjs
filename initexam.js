@@ -1,5 +1,6 @@
 // JSON Handler abstracted into another file
 // JSON Handler is the event handler for the onload event of buttons
+// Feature written by Kurt
 import {JSONHandler, exams} from "./jsonparser.js"
 
 // store a reference to the body node
