@@ -47,7 +47,8 @@ const JSONHandler = async (input) => {
 
     try {
         let temp = await parseJSON(file)
-        addExams(temp)
+        if (temp.type != null )addExams(temp)
+        else alert("Incorrectly formatted file")
         // console.log(exams)
     
     } catch(e) {

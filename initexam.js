@@ -29,7 +29,10 @@ initexam.addEventListener('click', () => {
     console.log("localstorage: ",localStorage)
     console.log("localstorage e:",localStorage.getItem('exams'))
     console.log(JSON.parse(localStorage.getItem("exams")))
-    window.open('./testproper.html')
+    
+    if(exams.length != 3) alert("Insufficient files")
+    else window.open('./testproper.html')
+    
 })
 
 
