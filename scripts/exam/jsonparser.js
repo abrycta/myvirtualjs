@@ -1,7 +1,8 @@
-// store a reference to our file handle
-let multiChoiceExam = {}
-let identificationExam = {}
-let enumerationExam = {}
+let exams = []
+
+function addExams(examPart) {
+    exams.push(examPart)
+}
 /*
 function parseJSON(input) {
     let file = input.target.files[0];
@@ -46,13 +47,12 @@ const JSONHandler = async (input) => {
 
     try {
         let temp = await parseJSON(file)
-        console.log(temp)
-        if(temp.type === "multi-choice") Object.assign(multiChoiceExam, temp)
-        else if (temp.type === "identification") Object.assign(identificationExam, temp)
-        else Object.assign(enumerationExam, temp)
+        addExams(temp)
+        // console.log(exams)
+    
     } catch(e) {
         console.warn(e.message)
     }
 }
 
-export { JSONHandler, multiChoiceExam, enumerationExam, identificationExam}
+export { JSONHandler, exams}
