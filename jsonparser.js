@@ -1,35 +1,16 @@
 let exams = []
 
 function addExams(examPart) {
-    exams.push(examPart)
+    if (exams.length === 3) return
+
+    if (!["multi-choice", "identification", "matching"]
+        .some(e => e.type === examPart.type)) {
+        if (!exams.some(e => e.type === examPart.type)) exams.push(examPart)
+        else alert("File already loaded.")
+    } else alert("Invalid file")
+    console.log(exams.length)
 }
-/*
-function parseJSON(input) {
-    let file = input.target.files[0];
 
-    let reader = new FileReader();
-
-    // read File object as Text
-    // contents are stored in the
-    // result property of reader
-    reader.readAsText(file);
-
-    reader.onload = function() {
-        return function(e) {
-            examPart = JSON.parse(reader.result)
-            console.log(examPart)
-        }
-    };
-
-    // handler when an error occurs
-    reader.onerror = function() {
-        console.log(reader.error);
-    };
-
-    return examPart
-
-}
-*/
 const parseJSON = (input) => {
     const reader = new FileReader()
 
@@ -47,8 +28,7 @@ const JSONHandler = async (input) => {
 
     try {
         let temp = await parseJSON(file)
-        if (temp.type != null )addExams(temp)
-        else alert("Incorrectly formatted file")
+        addExams(temp)
         // console.log(exams)
     
     } catch(e) {
