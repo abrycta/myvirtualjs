@@ -1,4 +1,4 @@
-import {JSONHandler, exams} from "./scripts/exam/jsonparser.js"
+import {JSONHandler, exams} from "./jsonparser.js"
 const body = document.body
 
 var uploadJSONButton1 = document.createElement("input")
@@ -20,15 +20,17 @@ body.append(uploadJSONButton3)
 
 
 
-var test = document.createElement('button')
-test.setAttribute("type", "button")
-test.addEventListener('click', () => {
+var initexam = document.createElement('button')
+initexam.setAttribute("type", "button")
+initexam.innerText = "Initialize Exam"
+initexam.addEventListener('click', () => {
     console.log("exams: ",exams)
     localStorage.setItem("exams", JSON.stringify(exams))
     console.log("localstorage: ",localStorage)
     console.log("localstorage e:",localStorage.getItem('exams'))
     console.log(JSON.parse(localStorage.getItem("exams")))
+    window.open('./testproper.html')
 })
 
 
-body.append(test)
+body.append(initexam)
