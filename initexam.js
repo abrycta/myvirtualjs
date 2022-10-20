@@ -35,7 +35,21 @@ initexam.addEventListener('click', () => {
     // test if files are complete
     if(exams.length !== 3) alert("Insufficient files")
     else {
-        localStorage.setItem('exams', JSON.stringify(exams))
+        localStorage.setItem('identificationExam',
+            JSON.stringify(
+                exams.find(part => part.type === "identification")
+            )
+        )
+        localStorage.setItem('matchingExam',
+            JSON.stringify(
+                exams.find(part => part.type === "matching")
+            )
+        )
+        localStorage.setItem('multiChoiceExam',
+            JSON.stringify(
+                exams.find(part => part.type === "multi-choice")
+            )
+        )
         window.open('./testproper.html')
     }
     // logger function

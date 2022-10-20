@@ -56,4 +56,4 @@ const JSONHandler = async (input) => {
 // export the handler
 // exams contain the parsed questions and answers
 // in the form of an array
-export { JSONHandler, exams}
+export { JSONHandler, exams }
