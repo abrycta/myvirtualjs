@@ -1,42 +1,63 @@
-let identificationExam = JSON.parse(localStorage.getItem('identificationExam'))
-let matchingExam = JSON.parse(localStorage.getItem('matchingExam'))
-let multiChoiceExam = JSON.parse(localStorage.getItem('multiChoiceExam'))
+// exam objects
+const identificationExam = JSON.parse(localStorage.getItem('identificationExam'))
+const matchingExam = JSON.parse(localStorage.getItem('matchingExam'))
+const multiChoiceExam = JSON.parse(localStorage.getItem('multiChoiceExam'))
 
-console.log(identificationExam, matchingExam, multiChoiceExam)
-function newStudentSession(name) {
+// localStorage object for aggregating StudentSession objects
+let aggregatedExamStatistics = JSON.parse(localStorage.getItem('aggregatedExamStatistics'))
+
+// store a reference to the DOM
+const body = document.body
+
+// for answer checking
+// every object must be in the form of:
+// {index: 0, answer: "someString"}
+const studentIdentificationAnswers = []
+const studentMatchingExamAnswers = []
+const studentMultiChoiceExamAnswers = []
+
+// to be stored in the aggregatedExamStatistics localStorage object
+// store indexes of items in array
+const newStudentSession = () =>  {
     return {
         name: name,
-        score: 0,
+        correctIdentificationItems: [],
+        IncorrectIdentificationItems: [],
+        correctMatchingItems: [],
+        IncorrectMatchingItems: [],
+        correctMultiChoiceItems: [],
+        IncorrectMultiChoiceItems: [],
+        totalScore: 0,
     }
 }
 
-function renderItem() {
-
+const renderIdentificationItem = (item, index) => {
+    const htmlItem = document.createElement('div')
+    htmlItem.innerHTML = `
+        <h2>${item.Question}</h2>
+        <input type = "text" id = identification_${index} />
+    `
+    body.append(htmlItem)
 }
 
-function renderIdentificationItem(item) {
-
+// for answer checking
+// every object must be in the form of:
+// {index: 0, answer: "someString"}
+function checkIdentificationExam(index, answer) {
+    // possibly do parseInteger on the ID?
 }
 
-function renderMatchingTypeItem() {
-
-}
-
-function renderMultiChoiceItem() {
-
-}
-
-function processItem() {
-
-}
-
+// Exam logic
 function startExam() {
-
+    // create a new Student session
+    let studentSession = newStudentSession()
+    console.log(identificationExam.questions)
+    // start identification part
+    identificationExam['questions'].forEach((item) => {
+        renderIdentificationItem(item,
+            identificationExam['questions'].indexOf(item))
+    })
 }
 
-// Actual code
-// console.log(exams);
-
-// create a new Student session
-studentSession = newStudentSession()
+startExam()
 

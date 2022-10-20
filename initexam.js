@@ -3,6 +3,13 @@
 // Feature written by Kurt
 import {JSONHandler, exams} from "./jsonparser.js"
 
+let aggregatedExamStatistics = {
+    // after every student is done with their exam instance,
+    // append the sessionObject examSession to this array
+    // for processing
+    studentSessions: []
+}
+
 // store a reference to the body node
 const body = document.body
 
@@ -49,6 +56,9 @@ initexam.addEventListener('click', () => {
             JSON.stringify(
                 exams.find(part => part.type === "multi-choice")
             )
+        )
+        localStorage.setItem('aggregatedExamStatistics',
+            JSON.stringify(aggregatedExamStatistics)
         )
         window.open('./testproper.html')
     }
