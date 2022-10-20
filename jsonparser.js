@@ -4,7 +4,7 @@ let exams = []  // store exam part objects into an exam array
 function addExams(examPart) {
     if (exams.length === 3) return
     // if the part has a type property that matches the array, accept
-    if (["multi-choice", "identification", "matching"]
+    if (!["multi-choice", "identification", "matching"]
         .some(e => e.type === examPart.type)) {
         // second check, if the file already exists in the array, reject
         if (!exams.some(e => e.type === examPart.type)) exams.push(examPart)

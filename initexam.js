@@ -34,7 +34,11 @@ initexam.innerText = "Initialize Exam"
 initexam.addEventListener('click', () => {
     // test if files are complete
     if(exams.length !== 3) alert("Insufficient files")
-    else window.open('./testproper.html')
+    else {
+        localStorage.setItem('exams', JSON.stringify(exams))
+        window.open('./testproper.html')
+    }
+    // logger function
 })
 
 // append button to body node
