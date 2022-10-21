@@ -1,4 +1,5 @@
 // exam objects
+
 const identificationExam = JSON.parse(localStorage.getItem('identificationExam'))
 const matchingExam = JSON.parse(localStorage.getItem('matchingExam'))
 const multiChoiceExam = JSON.parse(localStorage.getItem('multiChoiceExam'))
@@ -46,6 +47,14 @@ const renderIdentificationItem = (item, index) => {
 function checkIdentificationExam(index, answer) {
     // possibly do parseInteger on the ID?
 }
+function nextPageButton() {
+    const nextPage = document.createElement('button')
+    nextPage.innerText = "Next Page"
+    nextPage.addEventListener('click', () => {
+        window.location.href = "./multipleChoiceExam.html"
+    })
+    body.append(nextPage)
+}
 
 // Exam logic
 function startExam() {
@@ -57,7 +66,13 @@ function startExam() {
         renderIdentificationItem(item,
             identificationExam['questions'].indexOf(item))
     })
+    nextPageButton()
 }
 
+
+function setCookie(){
+    document.cookie = "filter=value";
+}
 startExam()
+
 
