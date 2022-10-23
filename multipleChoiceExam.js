@@ -28,7 +28,7 @@ function nextPageButton() {
     const nextPage = document.createElement('button')
     nextPage.innerText = "Next Page"
     nextPage.addEventListener('click', () => {
-        window.location.href = "./multipleChoiceExam.html"
+        window.location.href = "./matchingTypeExam.html"
     })
     body.append(nextPage)
 }
