@@ -19,7 +19,7 @@ const renderChoice = (item, index) => {
 }
 
 function returnButton() {
-    const returnPage = document.createElement('button')
+    const returnPage = document.createElement('returnButton')
     returnPage.innerText = "Return"
     returnPage.addEventListener('click', () => {
         window.location.href = "./testproper.html"
@@ -28,7 +28,7 @@ function returnButton() {
 }
 
 function submitButton() {
-    const submitPage = document.createElement('button')
+    const submitPage = document.createElement('SubmitButton')
     submitPage.innerText = "Return"
     submitPage.addEventListener('click', () => {
         window.location.href = "./testproper.html"

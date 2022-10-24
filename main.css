@@ -2,7 +2,7 @@
     background-size: cover;
     font-family: sans-serif;
     padding : 0;
-    margin : 0;
+    margin : auto;
 }
 
 div {
@@ -10,21 +10,92 @@ div {
     color : midnightblue;
     background-color: antiquewhite;
     width : 800px;
-    margin-bottom : 5px;
+    margin-bottom: 5px;
     border : 3px solid #858ED1;
+}
+
+.questionText {
+    text-align: left;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    color: black;
+    padding: 5px 5px 5px 5px;
 }
 
 div h2 {
     text-align: justify;
     letter-spacing: 1px;
-    margin-bottom: 2rem;
+    margin-bottom: 5px;
 }
 
 input {
 
 }
 
-button {
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+/*button {*/
+/*    font-family: sans-serif;*/
+/*    color: bisque;*/
+/*    text-transform: uppercase;*/
+/*    text-decoration: none;*/
+/*    background: #858ED1;*/
+/*    padding: 10px;*/
+/*    border: none;*/
+/*    border-radius: 3px;*/
+/*    display: inline-block;*/
+/*    cursor: pointer;*/
+/*}*/
+
+nextPageButton {
+    font-family: sans-serif;
+    color: bisque;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #858ED1;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 1245px;
+    margin-bottom: 7px;
+}
+
+nextPageButton2 {
+    font-family: sans-serif;
+    color: bisque;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #858ED1;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 630px;
+    margin-bottom: 7px;
+}
+
+backButton {
+    font-family: sans-serif;
+    color: bisque;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #858ED1;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 550px;
+    margin-bottom: 7px;
+}
+
+returnButton {
     font-family: sans-serif;
     color: bisque;
     text-transform: uppercase;
@@ -37,6 +108,34 @@ button {
     cursor: pointer;
 }
 
+submitButton {
+    font-family: sans-serif;
+    color: bisque;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #858ED1;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.answerButton {
+    font-family: sans-serif;
+    color: bisque;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #858ED1;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom: 7px;
+    margin-left: 5px;
+}
+
 button:hover {
     color: #ffffff;
     background: aquamarine;
@@ -45,8 +144,24 @@ button:hover {
 }
 
 button:active {
-    background: aquamarine;
+    transform: scale(0.98);
+    background: red;
+    box-shadow: 2px 2px 10px gray;
 }
+
+.answerTextField {
+    position: relative;
+    width: 100%;
+    padding: 2px 2px 2px 2px;
+    max-width: 380px;
+    background: white;
+    border-radius: 6px;
+    color: black;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    font-size: 18px;
+}
+
 .dropzone {
     width: 200px;
     height: 20px;

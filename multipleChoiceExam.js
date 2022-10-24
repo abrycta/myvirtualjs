@@ -5,12 +5,12 @@ const body = document.body
 const renderMultipleChoiceItem = (item, index) => {
     const htmlItem = document.createElement('div')
     htmlItem.innerHTML=`
-        <h2>${item.question}</h2>
+        <h2 class = "questionText">${item.question}</h2>
         <ul>
-            <li><button type="button">${item.a}</button></li>
-            <li><button type="button">${item.b}</button></li>
-            <li><button type="button">${item.c}</button></li>
-            <li><button type="button">${item.d}</button></li>
+            <li><button type="button" class="answerButton">${item.a}</button></li>
+            <li><button type="button" class="answerButton">${item.b}</button></li>
+            <li><button type="button" class="answerButton">${item.c}</button></li>
+            <li><button type="button" class="answerButton">${item.d}</button></li>
         </ul>
         
     `
@@ -18,7 +18,7 @@ const renderMultipleChoiceItem = (item, index) => {
 }
 
 function backButton() {
-    const nextPage = document.createElement('button')
+    const nextPage = document.createElement('backButton')
     nextPage.innerText = "Back"
     nextPage.addEventListener('click', () => {
         window.location.href = "./testproper.html"
@@ -27,7 +27,7 @@ function backButton() {
 }
 
 function nextPageButton() {
-    const nextPage = document.createElement('button')
+    const nextPage = document.createElement('nextPageButton2')
     nextPage.innerText = "Next Page"
     nextPage.addEventListener('click', () => {
         document.body.innerHTML = '';

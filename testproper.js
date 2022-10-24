@@ -36,8 +36,8 @@ const newStudentSession = () =>  {
 const renderIdentificationItem = (item, index) => {
     const htmlItem = document.createElement('div')
     htmlItem.innerHTML = `
-        <h2>${item.Question}</h2>
-        <input type = "text" id = identification_${index} />
+        <h2 class = "questionText">${item.Question}</h2>
+        <input type = "text" id = identification_${index} class="answerTextField"/>
     `
     body.append(htmlItem)
 }
@@ -49,7 +49,7 @@ function checkIdentificationExam(index, answer) {
     // possibly do parseInteger on the ID?
 }
 function nextPageButton() {
-    const nextPage = document.createElement('button')
+    const nextPage = document.createElement('nextPageButton')
     nextPage.innerText = "Next Page"
     nextPage.addEventListener('click', () => {
         document.body.innerHTML = '';
