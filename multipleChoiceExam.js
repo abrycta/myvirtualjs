@@ -1,3 +1,5 @@
+import {matchingTypeExam} from "./matchingTypeExam.js";
+
 const multiChoiceExam = JSON.parse(localStorage.getItem('multiChoiceExam'))
 const body = document.body
 const renderMultipleChoiceItem = (item, index) => {
@@ -28,7 +30,8 @@ function nextPageButton() {
     const nextPage = document.createElement('button')
     nextPage.innerText = "Next Page"
     nextPage.addEventListener('click', () => {
-        window.location.href = "./matchingTypeExam.html"
+        document.body.innerHTML = '';
+        matchingTypeExam()
     })
     body.append(nextPage)
 }
