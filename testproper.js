@@ -1,4 +1,5 @@
 // exam objects
+import {multipleChoiceExamStart} from "./multipleChoiceExam.js";
 
 const identificationExam = JSON.parse(localStorage.getItem('identificationExam'))
 const matchingExam = JSON.parse(localStorage.getItem('matchingExam'))
@@ -51,7 +52,8 @@ function nextPageButton() {
     const nextPage = document.createElement('button')
     nextPage.innerText = "Next Page"
     nextPage.addEventListener('click', () => {
-        window.location.href = "./multipleChoiceExam.html"
+        document.body.innerHTML = '';
+        multipleChoiceExamStart()
     })
     body.append(nextPage)
 }
@@ -70,9 +72,6 @@ function startExam() {
 }
 
 
-function setCookie(){
-    document.cookie = "filter=value";
-}
 startExam()
 
 

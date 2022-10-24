@@ -33,7 +33,7 @@ function nextPageButton() {
     body.append(nextPage)
 }
 
-function multipleChoiceExam() {
+function multipleChoiceExamStart() {
 
     console.log(multiChoiceExam.questions)
     // start identification part
@@ -45,5 +45,4 @@ function multipleChoiceExam() {
     nextPageButton()
 }
 
-
-multipleChoiceExam()
+export { multipleChoiceExamStart }
