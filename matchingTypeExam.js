@@ -1,21 +1,11 @@
 const matchingExam = JSON.parse(localStorage.getItem('matchingExam'))
 const body = document.body
-
 const renderMatchingItem = (item, index) => {
     const htmlItem = document.createElement('div2')
 
-    // FOR DRAG AND DROP
-    // function handleDrag(event){
-    //
-    // }
-    // function handleDrop(event){
-    //
-    // }
-    // const items =
-
     htmlItem.innerHTML=`
         <h3>${item.Answer}</h3>
-        <input type = "drop" id = drop_${index} />
+        <div class = "dropzone" id = "dropTarget"></div>
     `
     body.append(htmlItem)
 }
@@ -37,6 +27,15 @@ function returnButton() {
     body.append(returnPage)
 }
 
+function submitButton() {
+    const submitPage = document.createElement('button')
+    submitPage.innerText = "Return"
+    submitPage.addEventListener('click', () => {
+        window.location.href = "./testproper.html"
+    })
+    body.append(submitPage)
+}
+
 function matchingTypeExam() {
     console.log(matchingExam.questions)
     // start matching type exam
@@ -50,9 +49,8 @@ function matchingTypeExam() {
         renderChoice(item,
             matchingExam['questions'].indexOf(item))
     })
-
-
     returnButton()
+    submitButton()
 }
 
-matchingTypeExam()
+export {matchingTypeExam}
