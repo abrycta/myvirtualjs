@@ -1,9 +1,51 @@
-div  {
-    color : mediumblue;
+*  {
+    background-size: cover;
+    font-family: sans-serif;
+    padding : 0;
+    margin : 0;
+}
+
+div {
+    align-content: center;
+    color : midnightblue;
     background-color: antiquewhite;
     width : 800px;
-    margin : auto;
+    margin-bottom : 5px;
     border : 3px solid #858ED1;
+}
+
+div h2 {
+    text-align: justify;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+}
+
+input {
+
+}
+
+button {
+    font-family: sans-serif;
+    color: bisque;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #858ED1;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+button:hover {
+    color: #ffffff;
+    background: aquamarine;
+    border: aquamarine;
+    transition: all 0.4s ease 0s;
+}
+
+button:active {
+    background: aquamarine;
 }
 .dropzone {
     width: 200px;
