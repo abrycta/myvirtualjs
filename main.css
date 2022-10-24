@@ -5,10 +5,13 @@
     margin : auto;
 }
 
+body {
+    background-color: blanchedalmond;
+}
+
 div {
     align-content: center;
-    color : midnightblue;
-    background-color: antiquewhite;
+    background-color: #D7E2E8;
     width : 800px;
     margin-bottom: 5px;
     border : 3px solid #858ED1;
@@ -37,22 +40,9 @@ ul {
     padding-left: 0;
 }
 
-/*button {*/
-/*    font-family: sans-serif;*/
-/*    color: bisque;*/
-/*    text-transform: uppercase;*/
-/*    text-decoration: none;*/
-/*    background: #858ED1;*/
-/*    padding: 10px;*/
-/*    border: none;*/
-/*    border-radius: 3px;*/
-/*    display: inline-block;*/
-/*    cursor: pointer;*/
-/*}*/
-
 nextPageButton {
     font-family: sans-serif;
-    color: bisque;
+    color: #FCC9C5;
     text-transform: uppercase;
     text-decoration: none;
     background: #858ED1;
@@ -65,9 +55,16 @@ nextPageButton {
     margin-bottom: 7px;
 }
 
+nextPageButton:hover {
+    color: #ffffff;
+    background: #CFE3E2;
+    border: #CFE3E2;
+    transition: all 0.4s ease 0s;
+}
+
 nextPageButton2 {
     font-family: sans-serif;
-    color: bisque;
+    color: #FCC9C5;
     text-transform: uppercase;
     text-decoration: none;
     background: #858ED1;
@@ -80,9 +77,16 @@ nextPageButton2 {
     margin-bottom: 7px;
 }
 
+nextPageButton2:hover {
+    color: #ffffff;
+    background: #CFE3E2;
+    border: #CFE3E2;
+    transition: all 0.4s ease 0s;
+}
+
 backButton {
     font-family: sans-serif;
-    color: bisque;
+    color: #FCC9C5;
     text-transform: uppercase;
     text-decoration: none;
     background: #858ED1;
@@ -95,9 +99,16 @@ backButton {
     margin-bottom: 7px;
 }
 
+backButton:hover {
+    color: #ffffff;
+    background: #CFE3E2;
+    border: #CFE3E2;
+    transition: all 0.4s ease 0s;
+}
+
 returnButton {
     font-family: sans-serif;
-    color: bisque;
+    color: #FCC9C5;
     text-transform: uppercase;
     text-decoration: none;
     background: #858ED1;
@@ -106,11 +117,18 @@ returnButton {
     border-radius: 3px;
     display: inline-block;
     cursor: pointer;
+}
+
+returnButton:hover {
+    color: #ffffff;
+    background: #CFE3E2;
+    border: #CFE3E2;
+    transition: all 0.4s ease 0s;
 }
 
 submitButton {
     font-family: sans-serif;
-    color: bisque;
+    color: #FCC9C5;
     text-transform: uppercase;
     text-decoration: none;
     background: #858ED1;
@@ -121,9 +139,17 @@ submitButton {
     cursor: pointer;
 }
 
+submitButton:hover {
+    color: #ffffff;
+    background: #CFE3E2;
+    border: #CFE3E2;
+    transition: all 0.4s ease 0s;
+}
+
 .answerButton {
+    width: 15rem;
     font-family: sans-serif;
-    color: bisque;
+    color: #FCC9C5;
     text-transform: uppercase;
     text-decoration: none;
     background: #858ED1;
@@ -132,20 +158,21 @@ submitButton {
     border-radius: 3px;
     display: inline-block;
     cursor: pointer;
+
     margin-bottom: 7px;
     margin-left: 5px;
 }
 
-button:hover {
+.answerButton:hover {
     color: #ffffff;
-    background: aquamarine;
-    border: aquamarine;
+    background: palevioletred;
+    border: palevioletred;
     transition: all 0.4s ease 0s;
 }
 
-button:active {
+.answerButton:active {
     transform: scale(0.98);
-    background: red;
+    background: #CFE3E2;
     box-shadow: 2px 2px 10px gray;
 }
 
@@ -153,19 +180,27 @@ button:active {
     position: relative;
     width: 100%;
     padding: 2px 2px 2px 2px;
-    max-width: 380px;
+    max-width: 500px;
     background: white;
     border-radius: 6px;
     color: black;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     margin-left: 5px;
     font-size: 18px;
 }
 
 .dropzone {
     width: 200px;
-    height: 20px;
-    background: dodgerblue;
+    height: 50px;
+    background: #858ED1;
+    margin: 10px;
+    padding: 10px;
+}
+
+.box {
+    width: 200px;
+    height: 50px;
+    background: palevioletred;
     margin: 10px;
     padding: 10px;
 }

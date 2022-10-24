@@ -29,7 +29,7 @@ function returnButton() {
 
 function submitButton() {
     const submitPage = document.createElement('SubmitButton')
-    submitPage.innerText = "Return"
+    submitPage.innerText = "Submit"
     submitPage.addEventListener('click', () => {
         window.location.href = "./testproper.html"
     })
