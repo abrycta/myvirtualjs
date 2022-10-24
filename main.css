@@ -5,3 +5,10 @@ div  {
     margin : auto;
     border : 3px solid #858ED1;
 }
+.dropzone {
+    width: 200px;
+    height: 20px;
+    background: dodgerblue;
+    margin: 10px;
+    padding: 10px;
+}
