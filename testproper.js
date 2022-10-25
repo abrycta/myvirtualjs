@@ -1,5 +1,6 @@
 // exam objects
-import {multipleChoiceExamStart} from "./multipleChoiceExam.js";
+import { multipleChoiceExamStart } from "./multipleChoiceExam.js";
+import { renderIdentificationItem, nextPageButton } from "./identificationExam.js";
 
 const identificationExam = JSON.parse(localStorage.getItem('identificationExam'))
 const matchingExam = JSON.parse(localStorage.getItem('matchingExam'))
@@ -11,35 +12,20 @@ let aggregatedExamStatistics = JSON.parse(localStorage.getItem('aggregatedExamSt
 // store a reference to the DOM
 const body = document.body
 
-// for answer checking
-// every object must be in the form of:
-// {index: 0, answer: "someString"}
-const studentIdentificationAnswers = []
-const studentMatchingExamAnswers = []
-const studentMultiChoiceExamAnswers = []
+let studentSession = {}
 
 // to be stored in the aggregatedExamStatistics localStorage object
 // store indexes of items in array
+// answers to be stored in the array
+// must be objects in the form of
+// { index, answer }
 const newStudentSession = () =>  {
     return {
         name: name,
-        correctIdentificationItems: [],
-        IncorrectIdentificationItems: [],
-        correctMatchingItems: [],
-        IncorrectMatchingItems: [],
-        correctMultiChoiceItems: [],
-        IncorrectMultiChoiceItems: [],
-        totalScore: 0,
+        identificationAnswers: new Map(),
+        matchingAnswers: new Map(),
+        multiChoiceAnswers: new Map(),
     }
-}
-
-const renderIdentificationItem = (item, index) => {
-    const htmlItem = document.createElement('div')
-    htmlItem.innerHTML = `
-        <h2 class = "questionText">${item.Question}</h2>
-        <input type="text" id = identification_${index} class="answerTextField" placeholder="input answer" onfocus="this.placeholder=''" onblur="this.placeholder = 'input answer'" required/>
-    `
-    body.append(htmlItem)
 }
 
 // for answer checking
@@ -48,21 +34,13 @@ const renderIdentificationItem = (item, index) => {
 function checkIdentificationExam(index, answer) {
     // possibly do parseInteger on the ID?
 }
-function nextPageButton() {
-    const nextPage = document.createElement('nextPageButton')
-    nextPage.innerText = "Next Page"
-    nextPage.addEventListener('click', () => {
-        document.body.innerHTML = '';
-        multipleChoiceExamStart()
-    })
-    body.append(nextPage)
-}
+
 
 // Exam logic
 function startExam() {
     // create a new Student session
-    let studentSession = newStudentSession()
-    console.log(identificationExam.questions)
+    studentSession = newStudentSession()
+
     // start identification part
     identificationExam['questions'].forEach((item) => {
         renderIdentificationItem(item,
@@ -74,4 +52,5 @@ function startExam() {
 
 startExam()
 
+export { body, studentSession }
 
