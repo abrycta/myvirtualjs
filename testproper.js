@@ -37,7 +37,7 @@ const renderIdentificationItem = (item, index) => {
     const htmlItem = document.createElement('div')
     htmlItem.innerHTML = `
         <h2 class = "questionText">${item.Question}</h2>
-        <input type = "text" id = identification_${index} class="answerTextField"/>
+        <input type="text" id = identification_${index} class="answerTextField" placeholder="input answer" onfocus="this.placeholder=''" onblur="this.placeholder = 'input answer'" required/>
     `
     body.append(htmlItem)
 }

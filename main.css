@@ -6,23 +6,30 @@
 }
 
 body {
-    background-color: blanchedalmond;
+    background-color: #ECE6EA;
 }
 
 div {
     align-content: center;
-    background-color: #D7E2E8;
+    background-color: white;
     width : 800px;
-    margin-bottom: 5px;
-    border : 3px solid #858ED1;
+    margin-bottom: 10px;
+    margin-top:10px;
+    border : 1px solid #C4D3C9;
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box;
+    border-radius: 10px;
 }
 
 .questionText {
+    font-family: monospace;
+    font-style: normal;
+    font-size: 19px;
     text-align: left;
     letter-spacing: 1px;
     margin-bottom: 2rem;
     color: black;
-    padding: 5px 5px 5px 5px;
+    padding: 15px 15px 15px 15px;
 }
 
 div h2 {
@@ -42,10 +49,10 @@ ul {
 
 nextPageButton {
     font-family: sans-serif;
-    color: #FCC9C5;
+    color: white;
     text-transform: uppercase;
     text-decoration: none;
-    background: #858ED1;
+    background: #8E6981;
     padding: 10px;
     border: none;
     border-radius: 3px;
@@ -57,61 +64,61 @@ nextPageButton {
 
 nextPageButton:hover {
     color: #ffffff;
-    background: #CFE3E2;
-    border: #CFE3E2;
+    background: palevioletred;
+    border: palevioletred;
     transition: all 0.4s ease 0s;
 }
 
 nextPageButton2 {
     font-family: sans-serif;
-    color: #FCC9C5;
+    color: white;
     text-transform: uppercase;
     text-decoration: none;
-    background: #858ED1;
+    background: #8E6981;
     padding: 10px;
     border: none;
     border-radius: 3px;
     display: inline-block;
     cursor: pointer;
-    margin-left: 1245px;
+    margin-left: 630px;
     margin-bottom: 7px;
 }
 
 nextPageButton2:hover {
     color: #ffffff;
-    background: #CFE3E2;
-    border: #CFE3E2;
+    background: palevioletred;
+    border: palevioletred;
     transition: all 0.4s ease 0s;
 }
 
 backButton {
     font-family: sans-serif;
-    color: #FCC9C5;
+    color: white;
     text-transform: uppercase;
     text-decoration: none;
-    background: #858ED1;
+    background: #8E6981;
     padding: 10px;
     border: none;
     border-radius: 3px;
     display: inline-block;
     cursor: pointer;
-    margin-right: 1240px;
+    margin-left: 550px;
     margin-bottom: 7px;
 }
 
 backButton:hover {
     color: #ffffff;
-    background: #CFE3E2;
-    border: #CFE3E2;
+    background: palevioletred;
+    border: palevioletred;
     transition: all 0.4s ease 0s;
 }
 
 returnButton {
     font-family: sans-serif;
-    color: #FCC9C5;
+    color: white;
     text-transform: uppercase;
     text-decoration: none;
-    background: #858ED1;
+    background: #8E6981;
     padding: 10px;
     border: none;
     border-radius: 3px;
@@ -121,17 +128,17 @@ returnButton {
 
 returnButton:hover {
     color: #ffffff;
-    background: #CFE3E2;
-    border: #CFE3E2;
+    background: palevioletred;
+    border: palevioletred;
     transition: all 0.4s ease 0s;
 }
 
 submitButton {
     font-family: sans-serif;
-    color: #FCC9C5;
+    color: white;
     text-transform: uppercase;
     text-decoration: none;
-    background: #858ED1;
+    background: #8E6981;
     padding: 10px;
     border: none;
     border-radius: 3px;
@@ -143,18 +150,18 @@ submitButton {
 
 submitButton:hover {
     color: #ffffff;
-    background: #CFE3E2;
-    border: #CFE3E2;
+    background: palevioletred;
+    border: palevioletred;
     transition: all 0.4s ease 0s;
 }
 
 .answerButton {
     width: 15rem;
     font-family: sans-serif;
-    color: #FCC9C5;
+    color: white;
     text-transform: uppercase;
     text-decoration: none;
-    background: #858ED1;
+    background: #8E6981;
     padding: 10px;
     border: none;
     border-radius: 3px;
@@ -178,16 +185,32 @@ submitButton:hover {
 }
 
 .answerTextField {
+    font-family: monospace;
+    font-size: 18px;
     position: relative;
     width: 100%;
     padding: 2px 2px 2px 2px;
     max-width: 500px;
     background: white;
-    border-radius: 6px;
-    color: black;
+    color: inherit;
     margin-bottom: 15px;
     margin-left: 5px;
-    font-size: 18px;
+}
+
+input {
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: gray;
+}
+input:focus {
+    box-shadow: 0 4px 2px -1px gray;
+    border-color: black;
+}
+
+::placeholder {
+    font-family: monospace;
+    color: gray;
+    opacity: 0.2;
 }
 
 .dropzone {
@@ -205,3 +228,5 @@ submitButton:hover {
     margin: 10px;
     padding: 10px;
 }
+
+
