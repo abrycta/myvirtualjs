@@ -15,7 +15,7 @@ const renderIdentificationItem = (item, index) => {
 
     console.log(studentSession['identificationAnswers'].get(index))
 
-    if (studentSession['identificationAnswers'].get(index) !== 'undefined') {
+    if (typeof studentSession['identificationAnswers'].get(index) !== 'undefined') {
         htmlItem.lastElementChild.value = studentSession['identificationAnswers'].get(index)
     }
 
