@@ -73,7 +73,7 @@ nextPageButton2 {
     border-radius: 3px;
     display: inline-block;
     cursor: pointer;
-    margin-left: 630px;
+    margin-left: 1245px;
     margin-bottom: 7px;
 }
 
@@ -95,7 +95,7 @@ backButton {
     border-radius: 3px;
     display: inline-block;
     cursor: pointer;
-    margin-left: 550px;
+    margin-right: 1240px;
     margin-bottom: 7px;
 }
 
@@ -137,6 +137,8 @@ submitButton {
     border-radius: 3px;
     display: inline-block;
     cursor: pointer;
+    margin-left: 500px;
+    margin-bottom: 14px;
 }
 
 submitButton:hover {
@@ -158,7 +160,6 @@ submitButton:hover {
     border-radius: 3px;
     display: inline-block;
     cursor: pointer;
-
     margin-bottom: 7px;
     margin-left: 5px;
 }

@@ -91,7 +91,7 @@
         },
         {
             "question": "Which is not a type of GoF Pattern?",
-            "a": "Behvairal Patterns",
+            "a": "Behavioral Patterns",
             "b": "Structural Patterns",
             "c": "Functional Patterns",
             "d": "Creational Patterns",
