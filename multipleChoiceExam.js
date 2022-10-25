@@ -28,6 +28,7 @@ function backButton() {
             renderIdentificationItem(item,
                 identificationExam['questions'].indexOf(item))
         })
+        nextPageButton()
     })
 
 

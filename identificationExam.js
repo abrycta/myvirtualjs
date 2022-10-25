@@ -62,5 +62,4 @@ function nextPageButton() {
     body.append(nextPage)
 }
 
-
 export { renderIdentificationItem, nextPageButton }
