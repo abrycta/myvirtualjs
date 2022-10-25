@@ -19,6 +19,9 @@ div {
     -webkit-background-clip: padding-box; /* for Safari */
     background-clip: padding-box;
     border-radius: 10px;
+    border-bottom-width: 3px;
+    border-right-width: 2px;
+    padding: 7px;
 }
 
 .questionText {
@@ -29,7 +32,7 @@ div {
     letter-spacing: 1px;
     margin-bottom: 2rem;
     color: black;
-    padding: 15px 15px 15px 15px;
+    padding: 5px;
 }
 
 div h2 {
