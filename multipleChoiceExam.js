@@ -1,4 +1,6 @@
 import {matchingTypeExam} from "./matchingTypeExam.js";
+import {renderIdentificationItem} from "./identificationExam.js";
+import {identificationExam} from "./testproper.js";
 
 const multiChoiceExam = JSON.parse(localStorage.getItem('multiChoiceExam'))
 const body = document.body
@@ -21,8 +23,14 @@ function backButton() {
     const nextPage = document.createElement('backButton')
     nextPage.innerText = "Back"
     nextPage.addEventListener('click', () => {
-        window.location.href = "./testproper.html"
+        document.body.innerHTML = '';
+        identificationExam['questions'].forEach((item) => {
+            renderIdentificationItem(item,
+                identificationExam['questions'].indexOf(item))
+        })
     })
+
+
     body.append(nextPage)
 }
 
@@ -38,7 +46,7 @@ function nextPageButton() {
 
 function multipleChoiceExamStart() {
 
-    console.log(multiChoiceExam.questions)
+    // console.log(multiChoiceExam.questions)
     // start identification part
     multiChoiceExam['questions'].forEach((item) => {
         renderMultipleChoiceItem(item,

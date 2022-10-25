@@ -36,21 +36,17 @@ function checkIdentificationExam(index, answer) {
 }
 
 
-// Exam logic
-function startExam() {
-    // create a new Student session
-    studentSession = newStudentSession()
-
-    // start identification part
+function startIdentificationExam() {
     identificationExam['questions'].forEach((item) => {
         renderIdentificationItem(item,
             identificationExam['questions'].indexOf(item))
     })
-    nextPageButton()
 }
 
+// Exam logic
+studentSession = newStudentSession()
+startIdentificationExam()
+nextPageButton()
 
-startExam()
-
-export { body, studentSession }
+export { body, studentSession, identificationExam, matchingExam, multiChoiceExam }
 
