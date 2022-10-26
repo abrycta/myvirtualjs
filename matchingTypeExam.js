@@ -1,4 +1,5 @@
 import {multipleChoiceExamStart} from "./multipleChoiceExam.js";
+import {multiChoiceExam} from "./testproper.js";
 
 const matchingExam = JSON.parse(localStorage.getItem('matchingExam'))
 const body = document.body
@@ -73,7 +74,11 @@ function backButton() {
     nextPage.innerText = "Back"
     nextPage.addEventListener('click', () => {
         document.body.innerHTML = '';
-        multipleChoiceExamStart()
+        multiChoiceExam['questions'].forEach((item) => {
+            renderMatchingItem(item,
+                multiChoiceExam['questions'].indexOf(item))
+        })
+        // multipleChoiceExamStart()
     })
     body.append(nextPage)
 }

@@ -1,43 +1,44 @@
 import {matchingTypeExam} from "./matchingTypeExam.js";
 import {renderIdentificationItem} from "./identificationExam.js";
+import {nextPageButton as nextPageIdentification}  from "./identificationExam.js";
 import {identificationExam, studentSession} from "./testproper.js";
 
 const multiChoiceExam = JSON.parse(localStorage.getItem('multiChoiceExam'))
 const body = document.body
 const renderMultipleChoiceItem = (item, index) => {
     // console.log(item, index)
-    const htmlItem = document.createElement('div')
+    let htmlItem = document.createElement('div')
     htmlItem.innerHTML = `
     <h2 class="questionText">${item.question}</h2>
     <form name="multiForm_${index}">
-            <input type="radio" name="multi_${index}" id =${item.a}" value="${item.a}"/>
+            <input type="radio" name="multi_${index}" id ="${item.a}" value="${item.a}"/>
             <label for = "${item.a}">${item.a}</label>
-            <input type="radio" name="multi_${index}" id =${item.b} "value="${item.b}"/>
+            <input type="radio" name="multi_${index}" id ="${item.b}" value="${item.b}"/>
             <label for = "${item.b}">${item.b}</label>
-            <input type="radio" name="multi_${index}" id =${item.c}" value="${item.c}"/>
+            <input type="radio" name="multi_${index}" id ="${item.c}" value="${item.c}"/>
             <label for = "${item.c}">${item.c}</label>
-            <input type="radio" name="multi_${index}" id =${item.d}" value="${item.d}"/>
+            <input type="radio" name="multi_${index}" id ="${item.d}" value="${item.d}"/>
             <label for = "${item.d}">${item.d}</label>
     </form>
     `
     // previously stored item, if any
-    let previousAnswer = studentSession['matchingAnswers'].get(index)
+    let previousAnswer = studentSession['multiChoiceAnswers'].get(index)
+    console.log(index)
+    console.log(previousAnswer)
+        try {
+        // [name^='multiForm_']
+            console.log(htmlItem
+                .lastElementChild
+                .querySelector(`[value =${previousAnswer}]`)
+        )
+            htmlItem
+                .lastElementChild
+                .querySelector(`#${previousAnswer}`)
+                .checked = true
+        } catch (TypeError) {
+            console.log(htmlItem.lastElementChild)
+        }
 
-    console.log(htmlItem)
-
-
-    if(previousAnswer !== null) {
-        console.log(htmlItem
-            .lastElementChild
-            .querySelector(`#${previousAnswer}`))
-        /*
-        htmlItem
-            .lastElementChild
-            .querySelector(`#${previousAnswer}`)
-            .checked = true
-
-         */
-    }
 
     body.append(htmlItem)
 }
@@ -46,14 +47,34 @@ function backButton() {
     const nextPage = document.createElement('backButton')
     nextPage.innerText = "Back"
     nextPage.addEventListener('click', () => {
+        // save progress
+        let selectedElements = document.querySelectorAll("[name^='multiForm_']")
+        let index = 0
+        let prevItem
+        console.log(selectedElements)
+        selectedElements.forEach((item) => {
+            try {
+                prevItem = item
+                    .querySelector("input[name ^= 'multi_']:checked")
+                    .value
+                studentSession['multiChoiceAnswers'].set(index, prevItem)
+                index++
+            }
+            catch (TypeError) {
+                console.log('jkjkjkj')
+                studentSession['multiChoiceAnswers'].set(index, null)
+                console.log(studentSession['multiChoiceAnswers'])
+                index++
+            }
+        })
+        // render identification
         document.body.innerHTML = '';
         identificationExam['questions'].forEach((item) => {
             renderIdentificationItem(item,
                 identificationExam['questions'].indexOf(item))
         })
-        nextPageButton()
+        nextPageIdentification()
     })
-
 
     body.append(nextPage)
 }
@@ -65,11 +86,21 @@ function nextPageButton() {
     nextPage.addEventListener('click', () => {
         let selectedElements = document.querySelectorAll("[name^='multiForm_']")
         let index = 0
+        let prevItem
         selectedElements.forEach((item) => {
-            studentSession['multiChoiceAnswers'].set(index,
-                item.querySelector("input[name ^= 'multi_']:checked").value)
-            index++
+            // console.log(item.querySelector("input[name ^= 'multi_']:checked").value)
+            try {
+            prevItem = item
+                .querySelector("input[name ^= 'multi_']:checked")
+                .value
+            if (prevItem != null) studentSession['multiChoiceAnswers'].set(index, prevItem)
+            index++ }
+            catch (TypeError) {
+                // ignore
+            }
         })
+        document.body.innerHTML = ''
+        matchingTypeExam()
     })
     console.log(studentSession['multiChoiceAnswers'])
     body.append(nextPage)

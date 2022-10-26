@@ -17,7 +17,6 @@ const renderIdentificationItem = (item, index) => {
         htmlItem.lastElementChild.value = studentSession['identificationAnswers'].get(index)
     }
 
-
     body.append(htmlItem)
 }
 
@@ -52,7 +51,7 @@ function nextPageButton() {
             studentSession['identificationAnswers'].set(index, item.value)
             index++
         })
-        document.body.innerHTML = '';
+        document.body.innerHTML = ''
         multipleChoiceExamStart()
     })
 
