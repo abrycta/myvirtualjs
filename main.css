@@ -276,8 +276,9 @@ input:focus {
 }
 hr {
     border: 0;
-    height: 1px;
-    background: #333 linear-gradient(to right, pink, palevioletred, pink);
+    height: 3px;
+    margin-top: 0;
+    background: #333 linear-gradient(to right, #FFB6C1, palevioletred, #FFB6C1);
 }
 
 
