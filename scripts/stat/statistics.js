@@ -1,3 +1,8 @@
+function averageScore(){
+    let average = "";
+
+
+}
 function highestScoring() {
     let bestStudent = "";
     let highScore = Math.max.apply(Math, scores);
@@ -16,4 +21,12 @@ function lowestScoring() {
         lowestStudent += "High Score Student = " + names[i] + "\n" + "High Score = " + highScore;
     }
     $("results").value = lowestStudent;
+}
+
+function mostAnsweredQ() {
+
+}
+
+function leastAnsweredQ() {
+
 }
