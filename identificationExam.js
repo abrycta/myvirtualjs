@@ -13,8 +13,6 @@ const renderIdentificationItem = (item, index) => {
         onblur="this.placeholder = 'input answer'" required/>
     `
 
-    console.log(studentSession['identificationAnswers'].get(index))
-
     if (typeof studentSession['identificationAnswers'].get(index) !== 'undefined') {
         htmlItem.lastElementChild.value = studentSession['identificationAnswers'].get(index)
     }
@@ -50,12 +48,11 @@ function nextPageButton() {
         let selectedElements = document.querySelectorAll("[id^='identification_']")
         let index = 0
         selectedElements.forEach((item) => {
-            console.log(index, item.value)
+            // console.log(index, item.value)
             studentSession['identificationAnswers'].set(index, item.value)
             index++
         })
         document.body.innerHTML = '';
-        console.log(studentSession['identificationAnswers'])
         multipleChoiceExamStart()
     })
 
