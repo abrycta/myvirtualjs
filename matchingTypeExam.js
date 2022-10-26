@@ -57,6 +57,40 @@ function drop(e) {
     
 }
 
+// const body = document.body
+// function allowDrop(ev) {
+//     ev.preventDefault();
+// }
+//
+// function drag(ev) {
+//     ev.dataTransfer.setData("text", ev.target.id);
+// }
+//
+// function drop(ev) {
+//     ev.preventDefault();
+//     let data = ev.dataTransfer.getData("text");
+//     ev.target.appendChild(document.getElementById(data));
+// }
+//
+// let dragE = document.createElement("div1")
+// dragE.setAttribute("ondrop", "drop(event)")
+// dragE.setAttribute("ondragover", "allowDrop(event)")
+// dragE.setAttribute("id", "div1")
+//
+// let dragE2 = document.createElement("div2")
+// dragE2.setAttribute("ondrop", "drop(event)")
+// dragE2.setAttribute("ondragover", "allowDrop(event)")
+// dragE2.setAttribute("id", "div2")
+//
+// let dropE = document.createElement("item")
+// dropE.setAttribute("draggable", "true")
+// dropE.setAttribute("ondragstart", "drag(event)")
+// dropE.innerText = "sheesh"
+//
+//
+// body.append(dragE)
+// body.append(dragE2)
+// body.append(dropE)
 
 const renderMatchingItem = (item, index) => {
 
