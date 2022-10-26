@@ -60,8 +60,9 @@ nextPageButton {
     border: none;
     border-radius: 3px;
     cursor: pointer;
-    margin-left: 750x;
+    margin-left: 1248px;
     margin-bottom: 7px;
+    display: inline-block;
 }
 
 nextPageButton:hover {
@@ -82,7 +83,7 @@ nextPageButton2 {
     border-radius: 3px;
     display: inline-block;
     cursor: pointer;
-    margin-left: 630px;
+    margin-left: 634px;
     margin-bottom: 7px;
 }
 
@@ -104,7 +105,7 @@ backButton {
     border-radius: 3px;
     display: inline-block;
     cursor: pointer;
-    margin-left: 550px;
+    margin-left: 548px;
     margin-bottom: 7px;
 }
 
@@ -238,6 +239,45 @@ input:focus {
 
 .drag-over {
     border: dashed 3px red;
+}
+
+.rad-input {
+    accent-color: palevioletred;
+}
+
+.rad-label {
+    display: inline-block;
+    align-items: center;
+    border-radius: 3px;
+    padding: 10px 10px;
+    margin: 3px 0;
+    cursor: pointer;
+    transition: .3s;
+    background-color: white;
+    width: 15rem;
+    color: black;
+    border: 3px solid;
+    border-color: white;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+.rad-label:active {
+    transform: scale(0.98);
+    background: white;
+    box-shadow: 2px 2px 10px gray;
+}
+
+.rad-label:hover,
+.rad-label:focus-within {
+    color: black;
+    background: white;
+    border-color: palevioletred;
+}
+hr {
+    border: 0;
+    height: 1px;
+    background: #333 linear-gradient(to right, pink, palevioletred, pink);
 }
 
 

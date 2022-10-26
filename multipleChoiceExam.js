@@ -10,20 +10,21 @@ const renderMultipleChoiceItem = (item, index) => {
     let htmlItem = document.createElement('div')
     htmlItem.innerHTML = `
     <h2 class="questionText">${item.question}</h2>
+    <hr>
     <form name="multiForm_${index}">
         <ul>
-            
-            <li><input type="radio" name="multi_${index}" id ="${item.a}" value="${item.a}"/>
-            <label for = "${item.a}">${item.a}</label></li>
-            
-            <li><input type="radio" name="multi_${index}" id ="${item.b}" value="${item.b}"/>
-            <label for = "${item.b}">${item.b}</label></li>
-            
-            <li><input type="radio" name="multi_${index}" id ="${item.c}" value="${item.c}"/>
-            <label for = "${item.c}">${item.c}</label></li>
-            
-            <li><input type="radio" name="multi_${index}" id ="${item.d}" value="${item.d}"/>
-            <label for = "${item.d}">${item.d}</label></li>
+            <li>
+            <input type="radio" class="rad-input" name="multi_${index}" id ="${item.a}" value="${item.a}"/>
+            <label class="rad-label" for = "${item.a}">${item.a}</label></li>
+            <li>
+            <input type="radio" class="rad-input" name="multi_${index}" id ="${item.b}" value="${item.b}"/>
+            <label class="rad-label" for = "${item.b}">${item.b}</label></li>
+            <li>
+            <input type="radio" class="rad-input" name="multi_${index}" id ="${item.c}" value="${item.c}"/>
+            <label class="rad-label" for = "${item.c}">${item.c}</label></li>
+            <li>
+            <input type="radio" class="rad-input" name="multi_${index}" id ="${item.d}" value="${item.d}"/>
+            <label class="rad-label" for = "${item.d}">${item.d}</label></li>
             
             </ul>
     </form>
