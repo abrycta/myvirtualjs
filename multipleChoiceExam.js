@@ -11,14 +11,21 @@ const renderMultipleChoiceItem = (item, index) => {
     htmlItem.innerHTML = `
     <h2 class="questionText">${item.question}</h2>
     <form name="multiForm_${index}">
-            <input type="radio" name="multi_${index}" id ="${item.a}" value="${item.a}"/>
-            <label for = "${item.a}">${item.a}</label>
-            <input type="radio" name="multi_${index}" id ="${item.b}" value="${item.b}"/>
-            <label for = "${item.b}">${item.b}</label>
-            <input type="radio" name="multi_${index}" id ="${item.c}" value="${item.c}"/>
-            <label for = "${item.c}">${item.c}</label>
-            <input type="radio" name="multi_${index}" id ="${item.d}" value="${item.d}"/>
-            <label for = "${item.d}">${item.d}</label>
+        <ul>
+            
+            <li><input type="radio" name="multi_${index}" id ="${item.a + index}" value="${item.a}"/>
+            <label for = "${item.a + index}">${item.a}</label></li>
+            
+            <li><input type="radio" name="multi_${index}" id ="${item.b + index }" value="${item.b}"/>
+            <label for = "${item.b + index}">${item.b}</label></li>
+            
+            <li><input type="radio" name="multi_${index}" id ="${item.c + index}" value="${item.c}"/>
+            <label for = "${item.c + index}">${item.c}</label></li>
+            
+            <li><input type="radio" name="multi_${index}" id ="${item.d + index}" value="${item.d}"/>
+            <label for = "${item.d + index}">${item.d}</label></li>
+            
+            </ul>
     </form>
     `
     // previously stored item, if any
@@ -29,16 +36,17 @@ const renderMultipleChoiceItem = (item, index) => {
         // [name^='multiForm_']
             console.log(htmlItem
                 .lastElementChild
-                .querySelector(`[value =${previousAnswer}]`)
-        )
+                .querySelector(`[value ="${previousAnswer}"]`))
             htmlItem
                 .lastElementChild
-                .querySelector(`#${previousAnswer}`)
+                .querySelector(`[value ="${previousAnswer}"]`)
                 .checked = true
+            console.log(`[value =${previousAnswer}]`)
         } catch (TypeError) {
-            console.log(htmlItem.lastElementChild)
+            
+            console.log(htmlItem, TypeError, htmlItem.lastElementChild,`[value ="${previousAnswer}"]`)
+            //console.log(htmlItem.lastElementChild)
         }
-
 
     body.append(htmlItem)
 }
