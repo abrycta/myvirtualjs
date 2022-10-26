@@ -50,7 +50,7 @@ function validateAccount() {
     } else {
         attempt--;
         errorMessage.innerText = `Account combination invalid. ${attempt} attempts left.`;
-        errorMessage.style.color = "red";
+        errorMessage.style.color = "white";
         clear();
     }
 
