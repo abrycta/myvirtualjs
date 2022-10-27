@@ -1,6 +1,7 @@
 import {multipleChoiceExamStart} from "./multipleChoiceExam.js";
 import {multiChoiceExam} from "./testproper.js";
 import {studentSession} from "./testproper.js";
+import {enforceAccomplishedExam} from "./checker.js";
 const matchingExam = JSON.parse(localStorage.getItem('matchingExam'))
 const body = document.body
 
@@ -193,17 +194,17 @@ function backButton() {
         // Experimental Code
         let selectedElements = document.querySelectorAll("[id^='dropTarget']")
         let index = 0
-        console.log("Drop Targetaaa",selectedElements)
+        console.log(studentSession['matchingAnswers'])
         selectedElements.forEach((item) => {
             try{
                 let indexV = null // for storing old index of the answer
                 let has_data =  item.hasChildNodes() // check if the question has an answer
                 let value = null
-                if (has_data){
+                if (has_data) {
                     value = item.firstChild.innerHTML
                     indexV = item.firstChild.id
                 }
-                if (value != null){
+                if (value != null) {
                     studentSession['matchingAnswers'].set(index, [value, indexV])
                 }
                 
@@ -226,13 +227,13 @@ function submitButton() {
     const submitPage = document.createElement('submitButton')
     submitPage.innerText = "Submit"
     submitPage.addEventListener('click', () => {
-        window.location.href = "./testproper.html"
+        // window.location.href = "./testproper.html"
+        enforceAccomplishedExam(studentSession)
     })
     body.append(submitPage)
 }
 
 function matchingTypeExam() {
-    console.log(matchingExam.questions)
 
     // For 2 column div currently is not responsive for mobile screens
     const container = document.createElement('span');
@@ -249,9 +250,6 @@ function matchingTypeExam() {
     container.appendChild(itemsDiv)
     container.appendChild(choicesDiv)
     body.append(container)
-    
-
-
 
     // start matching type exam
 
@@ -279,5 +277,6 @@ function swap(nodeA, nodeB) {
     // Move `nodeB` to before the sibling of `nodeA`
     parentA.insertBefore(nodeB, siblingA);
 }
+
 export {matchingTypeExam}
 

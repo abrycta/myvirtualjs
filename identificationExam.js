@@ -29,13 +29,6 @@ const getIdentificationAnswer = (item, index, answers) => {
 
  */
 
-// button handler for next page
-const identificationHandler = () => {
-    let selectedElements = document.querySelectorAll("[id^='identification_']")
-    selectedElements.forEach((item) => {
-        console.log(item)
-    })
-}
 
 function nextPageButton() {
     const nextPage = document.createElement('nextPageButton')
@@ -51,6 +44,7 @@ function nextPageButton() {
             studentSession['identificationAnswers'].set(index, item.value)
             index++
         })
+        // console.log(studentSession['identificationAnswers'])
         document.body.innerHTML = ''
         multipleChoiceExamStart()
     })
