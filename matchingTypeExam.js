@@ -1,6 +1,7 @@
 import {multipleChoiceExamStart} from "./multipleChoiceExam.js";
 import {multiChoiceExam} from "./testproper.js";
 import {studentSession} from "./testproper.js";
+import {enforceAccomplishedExam} from "./checker.js";
 const matchingExam = JSON.parse(localStorage.getItem('matchingExam'))
 const body = document.body
 
@@ -57,40 +58,6 @@ function drop(e) {
     
 }
 
-// const body = document.body
-// function allowDrop(ev) {
-//     ev.preventDefault();
-// }
-//
-// function drag(ev) {
-//     ev.dataTransfer.setData("text", ev.target.id);
-// }
-//
-// function drop(ev) {
-//     ev.preventDefault();
-//     let data = ev.dataTransfer.getData("text");
-//     ev.target.appendChild(document.getElementById(data));
-// }
-//
-// let dragE = document.createElement("div1")
-// dragE.setAttribute("ondrop", "drop(event)")
-// dragE.setAttribute("ondragover", "allowDrop(event)")
-// dragE.setAttribute("id", "div1")
-//
-// let dragE2 = document.createElement("div2")
-// dragE2.setAttribute("ondrop", "drop(event)")
-// dragE2.setAttribute("ondragover", "allowDrop(event)")
-// dragE2.setAttribute("id", "div2")
-//
-// let dropE = document.createElement("item")
-// dropE.setAttribute("draggable", "true")
-// dropE.setAttribute("ondragstart", "drag(event)")
-// dropE.innerText = "sheesh"
-//
-//
-// body.append(dragE)
-// body.append(dragE2)
-// body.append(dropE)
 
 const renderMatchingItem = (item, index) => {
 
@@ -115,24 +82,49 @@ const renderMatchingItem = (item, index) => {
             const choiceItem = document.createElement('h2')
             choiceItem.classList.add('item');
             choiceItem.id = oldIndex;
+            if (!studentSession['finished']){
             choiceItem.draggable = true;
+            }
             choiceItem.innerHTML = answer;
             choiceItem.addEventListener('dragstart', dragStart) // Apply event listener
             dropTarget.append(choiceItem);
         }
     }
     
-    // Add an event listener for watching the drop thingies
     
-    dropTarget.addEventListener('dragenter', dragEnter)
-    dropTarget.addEventListener('dragover', dragOver)
-    dropTarget.addEventListener('dragleave', dragLeave)
-    dropTarget.addEventListener('drop', drop)
+    if (studentSession['finished']){
+        let checkItem = studentSession['matchingAnswersCheck'].get(index)
+
+        const scoreText = document.createElement('h2');
+        scoreText.classList.add("scoreText");
+        scoreText.innerHTML = checkItem.points +"/" +checkItem.totalPoints;
+        htmlItem.prepend(scoreText);
+
+        
+        if (checkItem.correct){
+            htmlItem.classList.add("correct");
+        }else{
+            htmlItem.classList.add("wrong");
+            
+            const feedbackText = document.createElement('h2');
+            feedbackText.classList.add("feedbackText");
+            feedbackText.innerHTML = "Correct Answer: " + item.Choice;
+            htmlItem.append(feedbackText);
+        }
+    }else{
+        // Add an event listener for watching the drop thingies
+        dropTarget.addEventListener('dragenter', dragEnter);
+        dropTarget.addEventListener('dragover', dragOver);
+        dropTarget.addEventListener('dragleave', dragLeave);
+        dropTarget.addEventListener('drop', drop);
+    }
+    
 }
 
 
 
 const renderChoice = (item, index) => {
+    if (studentSession['finished']){return;}
     let choiceItem = document.getElementById("item"+index); // For checking if there already duplicate (from previous answer)
     let choicesDIv = document.getElementById("choicesDiv")
     if (!choiceItem){ // Only run if no previous answer
@@ -149,19 +141,25 @@ const renderChoice = (item, index) => {
     }
     
 }
-
+//// TODO WTF DOES THIS DO?? just remove ba
 function returnButton() {
     const returnPage = document.createElement('returnButton')
+    returnPage.classList.add("roundedFixedBtn");
+    returnPage.classList.add("fixedButtonLeft");
     returnPage.innerText = "Return"
     returnPage.addEventListener('click', () => {
+        saveData()
         window.location.href = "./testproper.html"
     })
+    
     body.append(returnPage)
 }
 
 
 function backButton() {
     const nextPage = document.createElement('backButton')
+    nextPage.classList.add("roundedFixedBtn");
+    nextPage.classList.add("fixedButtonRight");
     nextPage.innerText = "Back"
     /*
     nextPage.addEventListener('click', () => {
@@ -190,29 +188,7 @@ function backButton() {
     }) */
 
     nextPage.addEventListener('click', () => {
-        // Experimental Code
-        let selectedElements = document.querySelectorAll("[id^='dropTarget']")
-        let index = 0
-        console.log("Drop Targetaaa",selectedElements)
-        selectedElements.forEach((item) => {
-            try{
-                let indexV = null // for storing old index of the answer
-                let has_data =  item.hasChildNodes() // check if the question has an answer
-                let value = null
-                if (has_data){
-                    value = item.firstChild.innerHTML
-                    indexV = item.firstChild.id
-                }
-                if (value != null){
-                    studentSession['matchingAnswers'].set(index, [value, indexV])
-                }
-                
-                index++
-            }catch (TypeError){
-
-            }
-            
-        })
+        saveData();
         
         document.body.innerHTML = ''
         multipleChoiceExamStart()
@@ -221,18 +197,45 @@ function backButton() {
 
     body.append(nextPage)
 }
+function saveData(){
+    // Experimental Code
+    let selectedElements = document.querySelectorAll("[id^='dropTarget']")
+    let index = 0
+    console.log(studentSession['matchingAnswers'])
+    selectedElements.forEach((item) => {
+        try{
+            let indexV = null // for storing old index of the answer
+            let has_data =  item.hasChildNodes() // check if the question has an answer
+            let value = null
+            if (has_data) {
+                value = item.firstChild.innerHTML
+                indexV = item.firstChild.id
+            }
+            if (value != null) {
+                studentSession['matchingAnswers'].set(index, [value, indexV])
+            }
+            
+            index++
+        }catch (TypeError){
 
+        }
+        
+    })
+}
 function submitButton() {
     const submitPage = document.createElement('submitButton')
+    submitPage.classList.add("fixedButtonCenter")
+    submitPage.classList.add("roundedFixedBtn")
     submitPage.innerText = "Submit"
     submitPage.addEventListener('click', () => {
-        window.location.href = "./testproper.html"
+        saveData();
+        // window.location.href = "./testproper.html"
+        enforceAccomplishedExam(studentSession)
     })
     body.append(submitPage)
 }
 
 function matchingTypeExam() {
-    console.log(matchingExam.questions)
 
     // For 2 column div currently is not responsive for mobile screens
     const container = document.createElement('span');
@@ -245,13 +248,11 @@ function matchingTypeExam() {
 
     itemsDiv.style.flexGrow = 1;
     choicesDiv.style.flexGrow = 1;
+    choicesDiv.style.height = 100%
 
     container.appendChild(itemsDiv)
     container.appendChild(choicesDiv)
     body.append(container)
-    
-
-
 
     // start matching type exam
 
@@ -266,7 +267,7 @@ function matchingTypeExam() {
     })
     returnButton()
     backButton()
-    submitButton()
+    if (!studentSession['finished']){submitButton()}
 }
 
 function swap(nodeA, nodeB) {
@@ -279,5 +280,6 @@ function swap(nodeA, nodeB) {
     // Move `nodeB` to before the sibling of `nodeA`
     parentA.insertBefore(nodeB, siblingA);
 }
+
 export {matchingTypeExam}
 

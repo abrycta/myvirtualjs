@@ -12,9 +12,32 @@ const renderIdentificationItem = (item, index) => {
         onfocus="this.placeholder=''"
         onblur="this.placeholder = 'input answer'" required/>
     `
-
+    const textField = htmlItem.lastElementChild;
     if (typeof studentSession['identificationAnswers'].get(index) !== 'undefined') {
-        htmlItem.lastElementChild.value = studentSession['identificationAnswers'].get(index)
+        textField.value = studentSession['identificationAnswers'].get(index)
+        
+    }
+
+    if (studentSession['finished']){
+        let checkItem = studentSession['identificationAnswersCheck'].get(index)
+        textField.disabled = true;
+
+        const scoreText = document.createElement('h2');
+        scoreText.classList.add("scoreText");
+        scoreText.innerHTML = checkItem.points +"/" +checkItem.totalPoints;
+        htmlItem.prepend(scoreText);
+
+        
+        if (checkItem.correct){
+            htmlItem.classList.add("correct");
+        }else{
+            htmlItem.classList.add("wrong");
+            
+            const feedbackText = document.createElement('h2');
+            feedbackText.classList.add("feedbackText");
+            feedbackText.innerHTML = "Correct Answer: " + item.Answer;
+            htmlItem.append(feedbackText);
+        }
     }
 
     body.append(htmlItem)
@@ -29,16 +52,11 @@ const getIdentificationAnswer = (item, index, answers) => {
 
  */
 
-// button handler for next page
-const identificationHandler = () => {
-    let selectedElements = document.querySelectorAll("[id^='identification_']")
-    selectedElements.forEach((item) => {
-        console.log(item)
-    })
-}
 
 function nextPageButton() {
     const nextPage = document.createElement('nextPageButton')
+    nextPage.classList.add("roundedFixedBtn");
+    nextPage.classList.add("fixedButtonRight");
     nextPage.innerText = "Next Page"
 
 
@@ -51,6 +69,7 @@ function nextPageButton() {
             studentSession['identificationAnswers'].set(index, item.value)
             index++
         })
+        // console.log(studentSession['identificationAnswers'])
         document.body.innerHTML = ''
         multipleChoiceExamStart()
     })

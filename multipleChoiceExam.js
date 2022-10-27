@@ -30,36 +30,57 @@ const renderMultipleChoiceItem = (item, index) => {
     `
     // previously stored item, if any
     let previousAnswer = studentSession['multiChoiceAnswers'].get(index)
-    console.log(index)
-    console.log(previousAnswer)
         try {
-        // [name^='multiForm_']
-            console.log(htmlItem
-                .lastElementChild
-                .querySelector(`[value ="${previousAnswer}"]`))
             htmlItem
                 .lastElementChild
                 .querySelector(`[value ="${previousAnswer}"]`)
                 .checked = true
-            console.log(`[value =${previousAnswer}]`)
         } catch (TypeError) {
-            
-            console.log(htmlItem, TypeError, htmlItem.lastElementChild,`[value ="${previousAnswer}"]`)
-            //console.log(htmlItem.lastElementChild)
+            // console.log(htmlItem, TypeError, htmlItem.lastElementChild,`[value ="${previousAnswer}"]`)
+        }
+    
+
+    const form = htmlItem.lastElementChild;
+    if (studentSession['finished']){
+        
+        var x = form.getElementsByTagName("input");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].disabled = true;
         }
 
+        let checkItem = studentSession['multiChoiceAnswersCheck'].get(index)
+
+        const scoreText = document.createElement('h2');
+        scoreText.classList.add("scoreText");
+        scoreText.innerHTML = checkItem.points +"/" +checkItem.totalPoints;
+        htmlItem.prepend(scoreText);
+
+        
+        if (checkItem.correct){
+            htmlItem.classList.add("correct");
+        }else{
+            htmlItem.classList.add("wrong");
+            
+            const feedbackText = document.createElement('h2');
+            feedbackText.classList.add("feedbackText");
+            feedbackText.innerHTML = "Correct Answer: " + item.answer;
+            htmlItem.append(feedbackText);
+        }
+    }
     body.append(htmlItem)
 }
 
 function backButton() {
     const nextPage = document.createElement('backButton')
+    nextPage.classList.add("roundedFixedBtn");
+    nextPage.classList.add("fixedButtonLeft");
     nextPage.innerText = "Back"
     nextPage.addEventListener('click', () => {
         // save progress
         let selectedElements = document.querySelectorAll("[name^='multiForm_']")
         let index = 0
         let prevItem
-        console.log(selectedElements)
         selectedElements.forEach((item) => {
             try {
                 prevItem = item
@@ -69,9 +90,7 @@ function backButton() {
                 index++
             }
             catch (TypeError) {
-                console.log('jkjkjkj')
-                studentSession['multiChoiceAnswers'].set(index, null)
-                console.log(studentSession['multiChoiceAnswers'])
+                studentSession['multiChoiceAnswers'].set(index, "")
                 index++
             }
         })
@@ -81,6 +100,7 @@ function backButton() {
             renderIdentificationItem(item,
                 identificationExam['questions'].indexOf(item))
         })
+        console.log(studentSession['multiChoiceAnswers'])
         nextPageIdentification()
     })
 
@@ -89,6 +109,8 @@ function backButton() {
 
 function nextPageButton() {
     const nextPage = document.createElement('nextPageButton2')
+    nextPage.classList.add("roundedFixedBtn");
+    nextPage.classList.add("fixedButtonRight");
     nextPage.innerText = "Next Page"
 
     nextPage.addEventListener('click', () => {
@@ -104,19 +126,18 @@ function nextPageButton() {
             if (prevItem != null) studentSession['multiChoiceAnswers'].set(index, prevItem)
             index++ }
             catch (TypeError) {
-                // ignore
+                studentSession['multiChoiceAnswers'].set(index, "")
+                index++
             }
         })
         document.body.innerHTML = ''
         matchingTypeExam()
     })
-    console.log(studentSession['multiChoiceAnswers'])
     body.append(nextPage)
 }
 
 function multipleChoiceExamStart() {
 
-    // console.log(multiChoiceExam.questions)
     // start identification part
     multiChoiceExam['questions'].forEach((item) => {
         renderMultipleChoiceItem(item,

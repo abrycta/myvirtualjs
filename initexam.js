@@ -3,38 +3,48 @@
 // Feature written by Kurt
 import {JSONHandler, exams} from "./jsonparser.js"
 
-let aggregatedExamStatistics = {
-    // after every student is done with their exam instance,
-    // append the sessionObject examSession to this array
-    // for processing
-    studentSessions: []
-}
+let aggregatedExamStatistics = new Map();
 
 // store a reference to the body node
+var container = document.createElement("div")
 const body = document.body
+body.append(container)
+
+
+var title = document.createElement("h2")
+title.innerHTML = "Exam Initialization: Upload Json Files"
+title.style.textAlign = "center";
+container.append(title)
 
 // logic for first button
 var uploadJSONButton1 = document.createElement("input")
+uploadJSONButton1.classList.add("buttonA")
+uploadJSONButton1.classList.add("inputA")
 uploadJSONButton1.setAttribute("type", "file")
 uploadJSONButton1.addEventListener("change", JSONHandler)
 
 // logic for second button
 var uploadJSONButton2 = document.createElement("input")
+uploadJSONButton2.classList.add("buttonA")
+uploadJSONButton2.classList.add("inputA")
 uploadJSONButton2.setAttribute("type", "file")
 uploadJSONButton2.addEventListener("change", JSONHandler)
 
 // logic for second button
 var uploadJSONButton3 = document.createElement("input")
+uploadJSONButton3.classList.add("buttonA")
+uploadJSONButton3.classList.add("inputA")
 uploadJSONButton3.setAttribute("type", "file")
 uploadJSONButton3.addEventListener("change", JSONHandler)
 
 // append unique buttons to the body node
-body.append(uploadJSONButton1)
-body.append(uploadJSONButton2)
-body.append(uploadJSONButton3)
+container.append(uploadJSONButton1)
+container.append(uploadJSONButton2)
+container.append(uploadJSONButton3)
 
 // button for initializing exams
-var initexam = document.createElement('button') // create a button that
+var initexam = document.createElement('buttonA') // create a button that
+initexam.classList.add("buttonA")
 initexam.setAttribute("type", "button") // will execute the logic upon click
 initexam.innerText = "Initialize Exam"
 // execute this function when the button is called
@@ -58,12 +68,13 @@ initexam.addEventListener('click', () => {
             )
         )
         localStorage.setItem('aggregatedExamStatistics',
-            JSON.stringify(aggregatedExamStatistics)
+            JSON.stringify(Array.from(aggregatedExamStatistics.entries()) )
+            
         )
-        window.open('./testproper.html')
+        window.open('./login.html')
     }
     // logger function
 })
-
+console.log(aggregatedExamStatistics)
 // append button to body node
-body.append(initexam)
+container.append(initexam)

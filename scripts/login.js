@@ -16,7 +16,7 @@ var accounts =  [ //temporary
     {
         "username": "admin",
         "password": "admin"
-    }
+    },
 ]
 
 /**
@@ -45,8 +45,15 @@ function validateAccount() {
     
     if (isValid == true) {
         errorMessage.innerText = `Welcome ${username}`;
-        errorMessage.style.color = "green";
-        window.location = "index.html"; // if valid, redirect to index.html
+            errorMessage.style.color = "green";
+            localStorage.setItem("loggedInUser", username);
+        if (username == "admin"){
+            window.location = "admin.html";
+        }else{
+            
+            window.location = "testproper.html"; // if valid, redirect to index.html
+        }
+        
     } else {
         attempt--;
         errorMessage.innerText = `Account combination invalid. ${attempt} attempts left.`;

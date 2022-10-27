@@ -7,11 +7,10 @@ const matchingExam = JSON.parse(localStorage.getItem('matchingExam'))
 const multiChoiceExam = JSON.parse(localStorage.getItem('multiChoiceExam'))
 
 // localStorage object for aggregating StudentSession objects
-let aggregatedExamStatistics = JSON.parse(localStorage.getItem('aggregatedExamStatistics'))
-
+let aggregatedExamStatistics = new Map(JSON.parse(localStorage.getItem('aggregatedExamStatistics')))
+let loggedInUser = localStorage.getItem('loggedInUser');
 // store a reference to the DOM
 const body = document.body
-
 let studentSession = {}
 
 // to be stored in the aggregatedExamStatistics localStorage object
@@ -21,10 +20,19 @@ let studentSession = {}
 // { index, answer }
 const newStudentSession = () =>  {
     return {
-        name: name,
+        name: loggedInUser,
         identificationAnswers: new Map(),
         matchingAnswers: new Map(),
         multiChoiceAnswers: new Map(),
+
+        identificationAnswersCheck: new Map(),
+        matchingAnswersCheck: new Map(),
+        multiChoiceAnswersCheck: new Map(),
+        finished: false,
+        identificationScore: 0,
+        matchingScore: 0,
+        multiChoiceSCore: 0,
+        totalScore: 0,
     }
 }
 
@@ -43,10 +51,38 @@ function startIdentificationExam() {
     })
 }
 
+
+if (aggregatedExamStatistics != null && aggregatedExamStatistics.length != 0){
+    let found = false
+    console.log(aggregatedExamStatistics)
+    studentSession = aggregatedExamStatistics.get(loggedInUser)
+    if (studentSession != undefined){
+        found = true;
+        studentSession = JSON.parse(studentSession)
+        console.log("Student Session", studentSession)
+        studentSession.identificationAnswers = new Map(JSON.parse(studentSession.identificationAnswers))
+        studentSession.matchingAnswers = new Map(JSON.parse(studentSession.matchingAnswers))
+        studentSession.multiChoiceAnswers = new Map(JSON.parse(studentSession.multiChoiceAnswers))
+
+        studentSession.identificationAnswersCheck = new Map(JSON.parse(studentSession.identificationAnswersCheck))
+        studentSession.matchingAnswersCheck = new Map(JSON.parse(studentSession.matchingAnswersCheck))
+        studentSession.multiChoiceAnswersCheck = new Map(JSON.parse(studentSession.multiChoiceAnswersCheck))
+        console.log("Student Session", studentSession)
+    }
+    if (!found) {
+        studentSession = newStudentSession()
+    }
+}else{
+    studentSession = newStudentSession()
+}
+
 // Exam logic
-studentSession = newStudentSession()
+
+console.log("Student Session", studentSession)
 startIdentificationExam()
 nextPageButton()
-
+console.log("Aggregate tesproper", aggregatedExamStatistics)
 export { body, studentSession, identificationExam, matchingExam, multiChoiceExam }
+
+//TODO CHECK IF IN AGGRETAED
 
