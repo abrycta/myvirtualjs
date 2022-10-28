@@ -47,7 +47,7 @@ function checkIdentificationExam(index, answer) {
 function startIdentificationExam() {
     identificationExam['questions'].forEach((item) => {
         renderIdentificationItem(item,
-            identificationExam['questions'].indexOf(item))
+            identificationExam['questions'].indexOf(item), identificationExam['instructions'])
     })
 }
 

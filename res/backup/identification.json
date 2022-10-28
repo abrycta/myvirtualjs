@@ -1,5 +1,6 @@
 {
   "type": "identification",
+  "instructions": "Identify what is being asked in the following sentences.",
   "questions": [
     {
       "Question": "Description of what services that system is expected to provide and the constraints under which it must operate.",
