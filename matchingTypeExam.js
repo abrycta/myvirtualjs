@@ -1,5 +1,5 @@
 import {multipleChoiceExamStart} from "./multipleChoiceExam.js";
-import {multiChoiceExam} from "./testproper.js";
+import {identificationExam, multiChoiceExam} from "./testproper.js";
 import {studentSession} from "./testproper.js";
 import {enforceAccomplishedExam} from "./checker.js";
 const matchingExam = JSON.parse(localStorage.getItem('matchingExam'))
@@ -191,6 +191,12 @@ function backButton() {
         saveData();
         
         document.body.innerHTML = ''
+        const htmlItem = document.createElement('div')
+        htmlItem.innerHTML = `
+            <h2 class="center">Multiple Choice</h2>
+            <h2 class="center">${multiChoiceExam['instructions']}</h2> 
+            `
+        body.append(htmlItem)
         multipleChoiceExamStart()
     })
 
@@ -237,6 +243,12 @@ function submitButton() {
 
 function matchingTypeExam() {
 
+    const htmlItem = document.createElement('div')
+    htmlItem.innerHTML = `
+    <h2 class="center">Matching Type</h2>
+    <h2 class="center">${matchingExam['instructions']}</h2> 
+    `
+    body.append(htmlItem)
     // For 2 column div currently is not responsive for mobile screens
     const container = document.createElement('span');
     container.style.display = "flex"
@@ -255,7 +267,6 @@ function matchingTypeExam() {
     body.append(container)
 
     // start matching type exam
-
     matchingExam['questions'].forEach((item) => {
         renderMatchingItem(item,
             matchingExam['questions'].indexOf(item))

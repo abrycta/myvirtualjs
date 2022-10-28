@@ -73,6 +73,10 @@ div h2 {
     margin-bottom: 5px;
 }
 
+.center {
+    text-align: center;
+}
+
 
 ul {
     list-style-type: none;

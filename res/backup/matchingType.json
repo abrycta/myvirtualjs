@@ -1,6 +1,6 @@
 {
   "type": "matching",
-  "instructions": "Match the GoF Patterns with their accurate description. Drag the GoF Pattern and drop it in the empty box below its description.",
+  "instructions": "",
   "questions": [
     {
       "Choice": "Abstract Factory",

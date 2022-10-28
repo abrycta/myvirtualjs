@@ -1,13 +1,8 @@
 import {multipleChoiceExamStart} from "./multipleChoiceExam.js";
 import { body, studentSession, identificationExam } from './testproper.js'
 
-function renderIdentificationInstructions() {
-    identification
-}
 
-const renderIdentificationItem = (item, index, instructions) => {
-    const htmlItem1 = document.createElement('div')
-    htmlItem1.innerHTML=``
+const renderIdentificationItem = (item, index) => {
     const htmlItem = document.createElement('div')
     // console.log(studentSession['identificationAnswers'].get(index))
     htmlItem.innerHTML = `
@@ -44,7 +39,6 @@ const renderIdentificationItem = (item, index, instructions) => {
             htmlItem.append(feedbackText);
         }
     }
-
     body.append(htmlItem)
 }
 

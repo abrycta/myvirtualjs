@@ -45,9 +45,15 @@ function checkIdentificationExam(index, answer) {
 
 
 function startIdentificationExam() {
+    const htmlItem = document.createElement('div')
+    htmlItem.innerHTML = `
+    <h2 class="center">Identification</h2>
+    <h2 class="center">${identificationExam['instructions']}</h2> 
+    `
+    body.append(htmlItem)
     identificationExam['questions'].forEach((item) => {
         renderIdentificationItem(item,
-            identificationExam['questions'].indexOf(item), identificationExam['instructions'])
+            identificationExam['questions'].indexOf(item))
     })
 }
 

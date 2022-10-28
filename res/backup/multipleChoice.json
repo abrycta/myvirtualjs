@@ -1,6 +1,6 @@
 {
     "type": "multi-choice",
-    "instructions": "Choose the best answer for each of the following questions",
+    "instructions": "Choose the best answer for each of the following questions.",
     "questions": [
         {
             "question": "Which is not a type of prototyping?",
