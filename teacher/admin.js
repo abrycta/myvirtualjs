@@ -68,7 +68,7 @@ function generateStudentBox(student){
 
 function clearLocalStorage(){
     localStorage.clear();
-    window.location = "initexam.html"; // if valid, redirect to index.html
+    window.location = "index.html"; // if valid, redirect to index.html
 }
 
 function getQuestionsCount(){

@@ -1,7 +1,7 @@
 // JSON Handler abstracted into another file
 // JSON Handler is the event handler for the onload event of buttons
 // Feature written by Kurt
-import {JSONHandler, exams} from "./jsonparser.js"
+import {JSONHandler, exams} from "./test/jsonparser.js"
 
 let aggregatedExamStatistics = new Map();
 
@@ -71,7 +71,7 @@ initexam.addEventListener('click', () => {
             JSON.stringify(Array.from(aggregatedExamStatistics.entries()) )
             
         )
-        window.open('./login.html')
+        window.open('./login/index.html')
     }
     // logger function
 })

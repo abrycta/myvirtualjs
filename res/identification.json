@@ -1,5 +1,6 @@
 {
   "type": "identification",
+  "instructions": "Identify what is being asked in the following sentences.",
   "questions": [
     {
       "Question": "Description of what services that system is expected to provide and the constraints under which it must operate.",
@@ -16,6 +17,78 @@
     {
       "Question": "Statements of the services that a system should provide, how the system should react to particular input and how the system should behave in particular situations.",
       "Answer": "Functional requirements",
+      "Alt-Answer": null,
+      "Points": 3
+    },
+    {
+      "Question": "Constraints (timing, performance, reliability, development process, standards) on the services or functions offered by the system; normally apply to the system as a whole.",
+      "Answer": "Non-Functional requirements",
+      "Alt-Answer": null,
+      "Points": 3
+    },
+    {
+      "Question": "Creation of a simple working model of system to show users what requirements may look like when implemented.",
+      "Answer": "Throwaway prototyping",
+      "Alt-Answer": null,
+      "Points": 3
+    },
+    {
+      "Question": "Its main goal is to build a very robust prototype in a structured manner and constantly refine it.",
+      "Answer": "Evolutionary prototyping",
+      "Alt-Answer": null,
+      "Points": 3
+    },
+    {
+      "Question": "Way of structuring requirements to represent perspectives of different stakeholders.",
+      "Answer": "Viewpoints",
+      "Alt-Answer": null,
+      "Points": 3
+    },
+    {
+      "Question": "Graphical representations that describe the business process and the system to be developed.",
+      "Answer": "Analysis Models",
+      "Alt-Answer": null,
+      "Points": 3
+    },
+    {
+      "Question": "Official statement of system requirements.",
+      "Answer": "Software Requirements Specification",
+      "Alt-Answer": "SOA",
+      "Points": 3
+    },
+    {
+      "Question": "Defines a generic structure for a requirements document.",
+      "Answer": "IEEE",
+      "Alt-Answer": "The Institute of Electrical and Electronics Engineers",
+      "Points": 3
+    },
+    {
+      "Question": "Assessment of the quality of the requirements.",
+      "Answer": "Requirements Validation",
+      "Alt-Answer": null,
+      "Points": 3
+    },
+    {
+      "Question": "Process of identifying, understanding, tracking and controlling changes to system requirements.",
+      "Answer": "Requirements Management",
+      "Alt-Answer": null,
+      "Points": 3
+    },
+    {
+      "Question": "Stakeholders who influence the requirements.",
+      "Answer": "Indirect viewpoint",
+      "Alt-Answer": null,
+      "Points": 3
+    },
+    {
+      "Question": "People or systems that interact directly with the system.",
+      "Answer": "Interactor viewpoint",
+      "Alt-Answer": null,
+      "Points": 3
+    },
+    {
+      "Question": "Domain characteristics and constraints that influence the requirements.",
+      "Answer": "Domain viewpoint",
       "Alt-Answer": null,
       "Points": 3
     }

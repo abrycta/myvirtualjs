@@ -1,0 +1,23 @@
+{
+  "type": "identification",
+  "questions": [
+    {
+      "Question": "Description of what services that system is expected to provide and the constraints under which it must operate.",
+      "Answer": "User requirements",
+      "Alt-Answer": null,
+      "Points": 3
+    },
+    {
+      "Question": "Detailed information about the system functions, services and operational constraints that are to be implemented.",
+      "Answer": "System requirements",
+      "Alt-Answer": null,
+      "Points": 3
+    },
+    {
+      "Question": "Statements of the services that a system should provide, how the system should react to particular input and how the system should behave in particular situations.",
+      "Answer": "Functional requirements",
+      "Alt-Answer": null,
+      "Points": 3
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+    "type": "multi-choice",
+    "questions": [
+        {
+            "question": "Which is not a type of prototyping?",
+            "a": "Wizard of Oz",
+            "b": "Paper",
+            "c": "Documentation",
+            "d": "Mockup",
+            "answer": "Documentation"
+        },
+        {
+            "question": "Which is not a key design issue?",
+            "a": "Distribution",
+            "b": "Error handling",
+            "c": "Interface",
+            "d": "Persistence of Data",
+            "answer": "Interface"
+        },
+        {
+            "question": "Which is not a design process?",
+            "a": "Interface design",
+            "b": "Algorithm design",
+            "c": "Data design",
+            "d": "Integration design",
+            "answer": "Integration Design"
+        }
+    ]
+}

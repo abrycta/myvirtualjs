@@ -1,5 +1,6 @@
 {
     "type": "multi-choice",
+    "instructions": "Choose the best answer for each of the following questions.",
     "questions": [
         {
             "question": "Which is not a type of prototyping?",
@@ -24,6 +25,78 @@
             "c": "Data design",
             "d": "Integration design",
             "answer": "Integration Design"
+        },
+        {
+            "question": "Iterative process through which requirements are translated into a “blueprint” for building software.",
+            "a": "Architectural design",
+            "b": "Component design",
+            "c": "Software design",
+            "d": "Interface design",
+            "answer": "Software Design"
+        },
+        {
+            "question": "Establishes a basic structural framework that identifies the major components of system and the communication among these components.",
+            "a": "Architectural design",
+            "b": "Component design",
+            "c": "Software design",
+            "d": "Interface design",
+            "answer": "Architectural Design"
+        },
+        {
+            "question": "A component reads streams of data on its inputs and produces streams of data on its outputs, delivering a complete instance of the result in a standard order.",
+            "a": "Layered",
+            "b": "Repository",
+            "c": "Pipe and filter",
+            "d": "Blackboard",
+            "answer": "Pipe and filter"
+        },
+        {
+            "question": "Consists of a central data store and a set of independent components that access the data store.",
+            "a": "Layered",
+            "b": "Repository",
+            "c": "Pipe and filter",
+            "d": "Blackboard",
+            "answer": "Repository"
+        },
+        {
+            "question": "Organizes a system into layers, each of which provide a set of services.",
+            "a": "Layered",
+            "b": "Repository",
+            "c": "Pipe and filter",
+            "d": "Blackboard",
+            "answer": "Layered"
+        },
+        {
+            "question": "Technique of linking two or more computers into a network (usually via a LAN) in order to take advantage of the parallel processing power of those computers.",
+            "a": "Cloud computing",
+            "b": "Grid computing",
+            "c": "Cluster computing",
+            "d": "Peer-to-peer",
+            "answer": "Cluster computing"
+        },
+        {
+            "question": "Makes applications easily adapt to changing technologies and integrate with other applications.",
+            "a": "CORBA",
+            "b": "RPC",
+            "c": "SOA",
+            "d": "REST",
+            "answer": "SOA"
+        },
+        {
+            "question": "Describes how the software communicates within itself, to systems that interact with it, and with humans who use it.",
+            "a": "Interface design",
+            "b": "Data design",
+            "c": "Algorithm design",
+            "d": "Architectural design",
+            "answer": "Interface design"
+        },
+        {
+            "question": "Which is not a type of GoF Pattern?",
+            "a": "Behavioral Patterns",
+            "b": "Structural Patterns",
+            "c": "Functional Patterns",
+            "d": "Creational Patterns",
+            "answer": "Functional Patterns"
         }
     ]
 }

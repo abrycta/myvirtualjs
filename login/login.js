@@ -48,10 +48,9 @@ function validateAccount() {
             errorMessage.style.color = "green";
             localStorage.setItem("loggedInUser", username);
         if (username == "admin"){
-            window.location = "admin.html";
+            window.location = "/teacher/index.html";
         }else{
-            
-            window.location = "testproper.html"; // if valid, redirect to index.html
+            window.location = "/test/index.html"; // if valid, redirect to index.html
         }
         
     } else {
