@@ -146,7 +146,7 @@ function returnButton() {
     const returnPage = document.createElement('returnButton')
     returnPage.classList.add("roundedFixedBtn");
     returnPage.classList.add("fixedButtonLeft");
-    returnPage.innerText = "Return"
+    returnPage.innerText = "Logout"
     returnPage.addEventListener('click', () => {
         saveData()
         window.location.href = "/login/index.html"
@@ -161,31 +161,7 @@ function backButton() {
     nextPage.classList.add("roundedFixedBtn");
     nextPage.classList.add("fixedButtonRight");
     nextPage.innerText = "Back"
-    /*
-    nextPage.addEventListener('click', () => {
-        // save progress
-        let selectedElements = document.querySelectorAll("[name^='multiForm_']")
-        let index = 0
-        let prevItem
-        console.log(selectedElements)
-        /*
-        selectedElements.forEach((item) => {
-            try {
-                prevItem = item
-                    .querySelector("input[name ^= 'multi_']:checked")
-                    .value
-                studentSession['multiChoiceAnswers'].set(index, prevItem)
-                index++
-            }
-            catch (TypeError) {
-                console.log('jkjkjkj')
-                studentSession['multiChoiceAnswers'].set(index, null)
-                console.log(studentSession['multiChoiceAnswers'])
-                index++
-            }
-        })
-        
-    }) */
+
 
     nextPage.addEventListener('click', () => {
         saveData();
@@ -237,6 +213,7 @@ function submitButton() {
         saveData();
         // window.location.href = "./index.html"
         enforceAccomplishedExam(studentSession)
+        alert("Your results will now be shown. Afterwards, press the logout button")
     })
     body.append(submitPage)
 }

@@ -13,7 +13,7 @@ div {
     align-content: center;
     background-color: white;
     width : 800px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     margin-top:10px;
     border : 1px solid #C4D3C9;
     -webkit-background-clip: padding-box; /* for Safari */
@@ -126,20 +126,20 @@ nextPageButton:hover {
 
 .fixedButtonRight{
     position: fixed;
-    bottom: 10%;
-    right: 25%; 
+    bottom: 1%;
+    left: 40%;
     padding: 20px;
 }
 .fixedButtonLeft{
     position: fixed;
-    bottom: 10%;
-    right: 65%; 
+    bottom: 1%;
+    left: -10%;
     padding: 20px;
 }
 
 .fixedButtonCenter{
     position: fixed;
-    bottom: 10%;
+    bottom: 1%;
     right: 45%; 
     padding: 20px;
 }
@@ -216,6 +216,8 @@ returnButton {
     border-radius: 3px;
     display: inline-block;
     cursor: pointer;
+    margin-left: 548px;
+    margin-bottom: 7px;
 }
 
 returnButton:hover {
