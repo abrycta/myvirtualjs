@@ -138,6 +138,12 @@ const renderChoice = (item, index) => {
         choiceItem.addEventListener('dragstart', dragStart) // reapply event listener
         div.append(choiceItem)
         choicesDIv.append(div)
+
+        var children = choicesDiv.children();
+
+        while (children.length) {
+            choicesDIv.append(children.splice(Math.floor(Math.random() *  children.length), 1));
+        }
     }
     
 }

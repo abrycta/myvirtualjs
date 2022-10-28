@@ -1,15 +1,17 @@
 // module written by Kurt
 let exams = []  // store exam part objects into an exam array
-
+let accounts = {}
 function addExams(examPart) {
-    if (exams.length === 3) return
+    if (exams.length === 4) return
     // if the part has a type property that matches the array, accept
     if (!["multi-choice", "identification", "matching"]
         .some(e => e.type === examPart.type)) {
         // second check, if the file already exists in the array, reject
         if (!exams.some(e => e.type === examPart.type)) exams.push(examPart)
         else alert("File already loaded.")
-    } else alert("Invalid file")
+    } else if (examPart['accounts']) {
+        exams.push(examPart['accounts'])
+    }  else alert("Invalid file")
     console.log(exams.length)
 }
 
@@ -45,8 +47,9 @@ const JSONHandler = async (input) => {
 
     try {
         let temp = await parseJSON(file)
+        // if accounts.attribute does not exist,
+        // then it is an exam file
         addExams(temp)
-        // console.log(exams)
     
     } catch(e) {
         console.warn(e.message)
@@ -56,4 +59,4 @@ const JSONHandler = async (input) => {
 // export the handler
 // exams contain the parsed questions and answers
 // in the form of an array
-export { JSONHandler, exams }
+export { JSONHandler, exams, accounts}

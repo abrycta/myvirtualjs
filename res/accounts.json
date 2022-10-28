@@ -1,20 +1,24 @@
-{
+{   "type": "accounts",
     "accounts": [ 
         {
             "username": "user1",
-            "password": "pass1"
+            "password": "pass1",
+            "name": "Ancheta, Charles Jr."
         },
         {
             "username": "user2",
-            "password": "pass2"
+            "password": "pass2",
+            "name": "Bustarde, Jerome"
         },
         {
             "username": "user3",
-            "password": "pass3"
+            "password": "pass3",
+            "name": "Castro, Enrico"
         },
         {
             "username": "admin",
-            "password": "admin"
+            "password": "admin",
+            "name": "Kurt C. Nudo"
         }
     ]
 }
