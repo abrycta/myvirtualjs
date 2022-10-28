@@ -3,10 +3,13 @@ import {renderIdentificationItem} from "./identificationExam.js";
 import {nextPageButton as nextPageIdentification}  from "./identificationExam.js";
 import {identificationExam, studentSession} from "./testproper.js";
 
+// Module written by Jerome, Kurt
+
 const multiChoiceExam = JSON.parse(localStorage.getItem('multiChoiceExam'))
 const body = document.body
+
+// Helper function for rendering
 const renderMultipleChoiceItem = (item, index) => {
-    // console.log(item, index)
     let htmlItem = document.createElement('div')
     htmlItem.innerHTML = `
     <h2 class="questionText">${item.question}</h2>
@@ -30,16 +33,22 @@ const renderMultipleChoiceItem = (item, index) => {
     `
     // previously stored item, if any
     let previousAnswer = studentSession['multiChoiceAnswers'].get(index)
+    // restore form state
+    // select all elements of type input that are checked
+    // enclose in try blocks to ignore typerrors
+    // and continue executing
         try {
             htmlItem
                 .lastElementChild
                 .querySelector(`[value ="${previousAnswer}"]`)
                 .checked = true
         } catch (TypeError) {
-            // console.log(htmlItem, TypeError, htmlItem.lastElementChild,`[value ="${previousAnswer}"]`)
+            // ignore typeerrors
+            // this just means that there is no answer yet
         }
-    
 
+    // for use with the feedback function
+    // disallows further changes
     const form = htmlItem.lastElementChild;
     if (studentSession['finished']){
         
@@ -71,6 +80,7 @@ const renderMultipleChoiceItem = (item, index) => {
     body.append(htmlItem)
 }
 
+// function to append a backbutton
 function backButton() {
     const nextPage = document.createElement('backButton')
     nextPage.classList.add("roundedFixedBtn");
@@ -82,6 +92,10 @@ function backButton() {
         let index = 0
         let prevItem
         selectedElements.forEach((item) => {
+            // save form state
+            // select all elements of type input that are checked
+            // enclose in try blocks to ignore typerrors
+            // and continue executing
             try {
                 prevItem = item
                     .querySelector("input[name ^= 'multi_']:checked")
@@ -94,7 +108,7 @@ function backButton() {
                 index++
             }
         })
-        // render identification
+        // render identification (previous part)
         document.body.innerHTML = '';
         const htmlItem = document.createElement('div')
         htmlItem.innerHTML = `
@@ -124,7 +138,10 @@ function nextPageButton() {
         let index = 0
         let prevItem
         selectedElements.forEach((item) => {
-            // console.log(item.querySelector("input[name ^= 'multi_']:checked").value)
+            // save form state
+            // select all elements of type input that are checked
+            // enclose in try blocks to ignore typerrors
+            // and continue executing
             try {
             prevItem = item
                 .querySelector("input[name ^= 'multi_']:checked")
@@ -142,6 +159,8 @@ function nextPageButton() {
     body.append(nextPage)
 }
 
+// starting code
+// kind of like main()
 function multipleChoiceExamStart() {
     const htmlItem = document.createElement('div')
     htmlItem.innerHTML = `

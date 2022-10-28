@@ -7,6 +7,8 @@ const body = document.body
 
 // class has-data
 
+// MODULE WRITTEN BY THE ENTIRE TEAM
+// MATCHING TYPE WAS A LOT HARDER THAN EXPECTED
 
 function dragStart(e) {
     e.dataTransfer.setData('text/plain', e.target.id)
@@ -18,7 +20,6 @@ function dragStart(e) {
 // Functions just for preventing the default mechanism of e
 function dragEnter(e) {
     e.preventDefault();
-
 }
 function dragOver(e) {
     e.preventDefault();
@@ -43,7 +44,6 @@ function drop(e) {
         if (!parentDiv.classList.contains("drop-targets")){ // Prevent from deleting the div of the questions
             parentDiv.remove()
         }
-        
 
         // Re-add Event Listener
         draggable = document.getElementById(id)
@@ -53,11 +53,9 @@ function drop(e) {
     } else {
         let currentItem = e.target
         swap(currentItem, draggable)
-    
     }
     
 }
-
 
 const renderMatchingItem = (item, index) => {
 
@@ -137,17 +135,13 @@ const renderChoice = (item, index) => {
 
         choiceItem.addEventListener('dragstart', dragStart) // reapply event listener
         div.append(choiceItem)
-        choicesDIv.append(div)
 
-        var children = choicesDiv.children();
-
-        while (children.length) {
-            choicesDIv.append(children.splice(Math.floor(Math.random() *  children.length), 1));
-        }
+        let tempInt = Math.floor(Math.random()*div.children.length)
+        choicesDIv.insertBefore(div, choicesDIv.children[tempInt])
     }
-    
 }
 
+// also known as the logout button
 function returnButton() {
     const returnPage = document.createElement('returnButton')
     returnPage.classList.add("roundedFixedBtn");
@@ -219,7 +213,6 @@ function submitButton() {
         saveData();
         // window.location.href = "./index.html"
         enforceAccomplishedExam(studentSession)
-        alert("Your results will now be shown. Afterwards, press the logout button")
     })
     body.append(submitPage)
 }

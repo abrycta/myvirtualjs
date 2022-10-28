@@ -36,6 +36,7 @@ uploadJSONButton3.classList.add("inputA")
 uploadJSONButton3.setAttribute("type", "file")
 uploadJSONButton3.addEventListener("change", JSONHandler)
 
+// for accounts
 var studentCredentials = document.createElement("input")
 studentCredentials.classList.add("buttonA")
 studentCredentials.classList.add("inputA")
@@ -84,8 +85,6 @@ initexam.addEventListener('click', () => {
         )
         window.open('./login/index.html')
     }
-    // logger function
 })
-console.log(aggregatedExamStatistics)
 // append button to body node
 container.append(initexam)

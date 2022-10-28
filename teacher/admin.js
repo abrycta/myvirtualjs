@@ -7,6 +7,11 @@ let mostAnsweredQuestion = "";
 let leastAnsweredQuestion = "";
 let questions = new Map();
 
+// Module created by Marko, Enrico
+
+// Created by Marko
+// Extract studentSession objects previously declared in init
+// then stored in localstorage
 function getStudentSession(rawJsonStudent){
     let studentSessionS = JSON.parse(rawJsonStudent)
     console.log("Student Session", studentSessionS)
@@ -23,8 +28,10 @@ function getStudentSession(rawJsonStudent){
 aggregatedExamStatistics.forEach((studentSession, studentName) => {
     aggregatedExamStatistics.set(studentName, getStudentSession(studentSession))
 })
-console.log(aggregatedExamStatistics)
 
+// Created by Enrico
+// Compute for the average score of all students
+// Using studentSession objects
 function getAverageScore(){
     
     let index = 0;
@@ -43,12 +50,15 @@ function getAverageScore(){
             console.log(lowestScore)
         }
         index++;
-
+        // call this to manipulate the DOM tree
         generateStudentBox(studentSession);
     })
     averageScore = totalScore/index;
 }
 
+// render function
+// manipulate the dom tree
+// Marko, Enrico
 function generateStudentBox(student){
     let htmlItem = document.createElement('div');
     htmlItem.classList.add("Correct");
@@ -64,13 +74,14 @@ function generateStudentBox(student){
     document.body.append(htmlItem);
 }
 
-
-
+// For specification requirement: interface to clear
+// the localstorage
 function clearLocalStorage(){
     localStorage.clear();
     window.location = "index.html"; // if valid, redirect to index.html
 }
 
+// Compute which item was answered the least, most
 function getQuestionsCount(){
     aggregatedExamStatistics.forEach((studentSession, studentName) => {
         studentSession.identificationAnswersCheck.forEach((value, index) => {
@@ -99,6 +110,7 @@ function getQuestionsCount(){
     })
 }
 
+// Helper subroutine for getAverageScore
 function addQuestion(identifierA, index, value){
     if (value.correct){
         let identifier = identifierA
@@ -119,10 +131,11 @@ function addQuestion(identifierA, index, value){
 }
 
 getQuestionsCount()
-console.log(questions)
-
 getAverageScore();
 
+
+// rendering operations, manipulate the dom tree
+// Marko, Enrico
 const averageScoreText = document.getElementById("averageScore");
 const highestScoringStudentText = document.getElementById("highestScoringStudent");
 const lowestScoringStudentText = document.getElementById("lowestScoringStudent");
@@ -134,3 +147,5 @@ highestScoringStudentText.innerHTML += highestScoringStudent;
 lowestScoringStudentText.innerHTML += lowestScoringStudent;
 mostAnsweredQuestionText.innerHTML += mostAnsweredQuestion;
 leastAnsweredQuestionText.innerHTML += leastAnsweredQuestion;
+
+alert("Please see the readme file. This prompt can be disabled in admin.js")

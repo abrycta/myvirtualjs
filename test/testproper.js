@@ -2,6 +2,9 @@
 import { multipleChoiceExamStart } from "./multipleChoiceExam.js";
 import { renderIdentificationItem, nextPageButton } from "./identificationExam.js";
 
+// CORE LOGIC
+// MODULE WRITTEN BY KURT
+
 const identificationExam = JSON.parse(localStorage.getItem('identificationExam'))
 const matchingExam = JSON.parse(localStorage.getItem('matchingExam'))
 const multiChoiceExam = JSON.parse(localStorage.getItem('multiChoiceExam'))
@@ -14,10 +17,8 @@ const body = document.body
 let studentSession = {}
 
 // to be stored in the aggregatedExamStatistics localStorage object
-// store indexes of items in array
-// answers to be stored in the array
-// must be objects in the form of
-// { index, answer }
+// for easier processing
+// answers of students are stored
 const newStudentSession = () =>  {
     return {
         name: loggedInUser,
@@ -36,14 +37,7 @@ const newStudentSession = () =>  {
     }
 }
 
-// for answer checking
-// every object must be in the form of:
-// {index: 0, answer: "someString"}
-function checkIdentificationExam(index, answer) {
-    // possibly do parseInteger on the ID?
-}
-
-
+// start the first part of the exam
 function startIdentificationExam() {
     const htmlItem = document.createElement('div')
     htmlItem.innerHTML = `
@@ -57,7 +51,10 @@ function startIdentificationExam() {
     })
 }
 
-
+// case if aggregatedexamstatistics is not empty
+// this means that a student has already taken an exam
+// and that parsing within the admin panel
+// for statistics can now take place
 if (aggregatedExamStatistics != null && aggregatedExamStatistics.length != 0){
     let found = false
     console.log(aggregatedExamStatistics)
@@ -87,8 +84,7 @@ if (aggregatedExamStatistics != null && aggregatedExamStatistics.length != 0){
 console.log("Student Session", studentSession)
 startIdentificationExam()
 nextPageButton()
-console.log("Aggregate tesproper", aggregatedExamStatistics)
+
 export { body, studentSession, identificationExam, matchingExam, multiChoiceExam }
 
-//TODO CHECK IF IN AGGRETAED
 

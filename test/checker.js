@@ -1,8 +1,10 @@
 // pre-condition:
 // all items must be accomplished
 
+// CHECKER MODULER WRITTEN BY KURT
+
 import {identificationExam, matchingExam, multiChoiceExam} from "./testproper.js";
-import {nextPageButton as nextPageIdentification}  from "./identificationExam.js"; // RECHANGE THE ALLIAS TODO
+import {nextPageButton as nextPageIdentification}  from "./identificationExam.js";
 import {renderIdentificationItem} from "./identificationExam.js";
 function enforceAccomplishedExam(studentSession) {
     let isAccomplished = true   // true if otherwise
@@ -10,7 +12,8 @@ function enforceAccomplishedExam(studentSession) {
     let unaccomplishedMultiChoiceItems = []
     let unaccomplishedMatchingItems = []
     let tempIndex = 0 // for use with the matchingType Exam checker
-    // checker for identification
+
+    // make sure that all items are answered
     studentSession['identificationAnswers'].forEach((value, key) => {
         // if string is empty, warn
         if (value === "")  {
@@ -28,7 +31,7 @@ function enforceAccomplishedExam(studentSession) {
         }
     })
 
-    // checker for multiple choice
+    // make sure that all items are answered
     studentSession['multiChoiceAnswers'].forEach((value, key) => {
         if (value === "") {
             unaccomplishedMultiChoiceItems.push(key)
@@ -36,9 +39,7 @@ function enforceAccomplishedExam(studentSession) {
         }
     })
 
-    console.log(matchingExam)
-    console.log(studentSession['matchingAnswers'])
-
+    // make sure that all items are answered
     matchingExam['questions'].forEach((val) => {
         console.log(val)
         if(!studentSession['matchingAnswers'].has(tempIndex)) {
@@ -47,7 +48,9 @@ function enforceAccomplishedExam(studentSession) {
         tempIndex++
     })
 
-    
+    if (isAccomplished) {
+        alert("Your results will now be shown. Afterwards, press the logout button")
+    }
 
     if (!isAccomplished) {
         if (unaccomplishedIdentificationItems.length > 0) {
@@ -62,8 +65,6 @@ function enforceAccomplishedExam(studentSession) {
         }
         return; // DO NOT CONTINUE
     }
-
-    
 
     // Start Checking the Identification Answer
     tempIndex = 0
@@ -137,16 +138,23 @@ function enforceAccomplishedExam(studentSession) {
         renderIdentificationItem(item,
             identificationExam['questions'].indexOf(item))
     })
-    console.log(studentSession['multiChoiceAnswers'])
 
     let aggregatedExamStatistics = new Map(JSON.parse(localStorage.getItem('aggregatedExamStatistics')))
     if (aggregatedExamStatistics == null){
         aggregatedExamStatistics = new Map();
     }
-    console.log(studentSession)
-    //JSON.stringify(Array.from(aggrestudentSession.identificationAnswersgatedExamStatistics.entries()) )
+
+    // scores are computed through studentSession Objects
+    // Clone the current studentSession object
+    // to make sure that a copy is manipulated
+    // for further safety
+
     let studentSessionClone = Object.assign({}, studentSession)
-    console.log(studentSessionClone)
+
+    // store the results of a session into the localstorage
+    // as most results are in the form of a map, we need to call
+    // Array.from to convert map entries into arrays before stringifying the JSON
+    // because Map objects cannot be stringified into JSON objects
     studentSessionClone.identificationAnswers = JSON.stringify(Array.from(studentSession.identificationAnswers.entries()) )
     studentSessionClone.matchingAnswers = JSON.stringify(Array.from(studentSession.matchingAnswers.entries()) )
     studentSessionClone.multiChoiceAnswers = JSON.stringify(Array.from(studentSession.multiChoiceAnswers.entries()) )
@@ -155,10 +163,9 @@ function enforceAccomplishedExam(studentSession) {
     studentSessionClone.matchingAnswersCheck = JSON.stringify(Array.from(studentSession.matchingAnswersCheck.entries()) )
     studentSessionClone.multiChoiceAnswersCheck = JSON.stringify(Array.from(studentSession.multiChoiceAnswersCheck.entries()) )
 
-
-
     aggregatedExamStatistics.set(studentSession['name'], JSON.stringify(studentSessionClone))
-    console.log("AGGREGATEDsubmit", aggregatedExamStatistics)
+
+    // store into local storage
     localStorage.setItem("aggregatedExamStatistics", JSON.stringify(Array.from(aggregatedExamStatistics.entries())));
     nextPageIdentification()
 }
